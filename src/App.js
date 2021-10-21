@@ -40,7 +40,7 @@ class App extends Component {
       // update the state of the component with the result here
       console.log(xhr.responseText)
     })
-    xhr.open('GET', 'https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
+    xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://66wy5dn7i7.execute-api.us-east-2.amazonaws.com/test/helloworld?name=John&city=Seattle')
     xhr.send()
     this.setState({username: xhr.responseText})
 
