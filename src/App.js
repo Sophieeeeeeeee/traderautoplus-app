@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
+import {Component} from "react";
 //
 // function App() {
 //   return (
