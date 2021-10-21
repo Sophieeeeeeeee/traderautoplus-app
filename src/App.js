@@ -35,8 +35,17 @@ class App extends Component {
   }
 
   handleClick () {
-    axios.get('https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
-        .then(response => this.setState({username: response.data.name}))
+    var xhr = new XMLHttpRequest()
+    xhr.addEventListener('load', () => {
+      // update the state of the component with the result here
+      console.log(xhr.responseText)
+    })
+    xhr.open('GET', 'https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
+    xhr.send()
+    this.setState({username: xhr.responseText})
+
+    // axios.get('https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
+    //     .then(response => this.setState({username: response.data.name}))
   }
 
   render () {
