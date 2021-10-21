@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-// import axios from "axios";
+import axios from "axios";
 import {Component} from "react";
 //
 // function App() {
@@ -35,17 +35,31 @@ class App extends Component {
   }
 
   handleClick () {
-    var xhr = new XMLHttpRequest()
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
-    })
-    xhr.open('GET', 'https://cors-anywhere.herokuapp.com/https://66wy5dn7i7.execute-api.us-east-2.amazonaws.com/test/helloworld?name=John&city=Seattle')
-    xhr.send()
-    this.setState({username: xhr.responseText})
+    // var xhr = new XMLHttpRequest()
+    // xhr.addEventListener('load', () => {
+    //   // update the state of the component with the result here
+    //   console.log(xhr.responseText)
+    // })
+    // xhr.open('GET', 'https:////cors-anywhere.herokuapp.com/https://66wy5dn7i7.execute-api.us-east-2.amazonaws.com/test/helloworld?name=John&city=Seattle')
+    // xhr.send()
+    // this.setState({username: xhr.responseText})
 
     // axios.get('https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
     //     .then(response => this.setState({username: response.data.name}))
+
+    // axios.get('https:////cors-anywhere.herokuapp.com/https://github.com/Sophieeeeeeeee')
+    //     .then(response => this.setState({username: response.data.name}))
+    // works!
+
+    axios.get('https:////cors-anywhere.herokuapp.com/https://ge3dewpamf.execute-api.us-east-2.amazonaws.com/test/helloworld?name=John&city=Seattle')
+        .then(response => this.setState({username: response.data.name}))
+
+
+    // axios.get('http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
+    //        .then(response => console.log(response))
+
+
+
   }
 
   render () {
