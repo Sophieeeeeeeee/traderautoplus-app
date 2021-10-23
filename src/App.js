@@ -60,7 +60,7 @@ class App extends Component {
         return (
             <div className='button__container'>
                 <button className='button' onClick={this.handleClick}>Senso</button>
-                <button className='button' onClick={this.handleClickk}>Database</button>
+                <button className='button' onClick={handleClickk}>Database</button>
                 <p>{this.state.senso}</p>
                 <p>{this.state.databasee}</p>
 
