@@ -27,7 +27,8 @@ class App extends Component {
     constructor () {
         super()
         this.state = {
-            username: ''
+            databasee: ''
+            senso:''
         }
 
         this.handleClick = this.handleClick.bind(this)
@@ -38,20 +39,32 @@ class App extends Component {
         xhr.addEventListener('load', () => {
             // update the state of the component with the result here
             console.log(xhr.responseText)
-            this.setState({username: xhr.responseText})
+            this.setState({senso: xhr.responseText})
         })
-        xhr.open('GET', ' https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
+        xhr.open('GET', 'http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/senso')
         xhr.send()
-
-        // axios.get('https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
-        //     .then(response => this.setState({username: response.data.name}))
+    }
+    
+     handleClickk () {
+        var db = new XMLHttpRequest()
+        db.addEventListener('load', () => {
+            // update the state of the component with the result here
+            console.log(db.responseText)
+            this.setState({databasee: db.responseText})
+        })
+        db.open('GET', 'http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
+        db.send()
     }
 
     render () {
         return (
             <div className='button__container'>
-                <button className='button' onClick={this.handleClick}>Click Me</button>
-                <p>{this.state.username}</p>
+                <button className='button' onClick={this.handleClick}>Senso</button>
+                <button className='button' onClick={this.handleClickk}>Database</button>
+                <p>{this.state.senso}</p>
+                <p>{this.state.databasee}</p>
+
+
             </div>
         )
     }
