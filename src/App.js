@@ -41,7 +41,7 @@ class App extends Component {
             console.log(xhr.responseText)
             this.setState({senso: xhr.responseText})
         })
-        xhr.open('GET', 'https://cors-anywhere.herokuapp.com/corsdemo/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/senso')
+        xhr.open('GET', 'https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/senso')
         xhr.send()
     }
     
@@ -52,7 +52,7 @@ class App extends Component {
             console.log(db.responseText)
             this.setState({databasee: db.responseText})
         })
-        db.open('GET', 'https://cors-anywhere.herokuapp.com/corsdemo/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
+        db.open('GET', 'https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
         db.send()
     }
 
