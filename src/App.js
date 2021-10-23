@@ -40,7 +40,7 @@ class App extends Component {
             console.log(xhr.responseText)
             this.setState({username: xhr.responseText})
         })
-        xhr.open('GET', 'http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
+        xhr.open('GET', ' https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
         xhr.send()
 
         // axios.get('https:////cors-anywhere.herokuapp.com/http://ec2-3-144-10-133.us-east-2.compute.amazonaws.com/')
