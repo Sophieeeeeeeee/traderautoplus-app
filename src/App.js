@@ -32,6 +32,7 @@ class App extends Component {
         }
 
         this.handleClick = this.handleClick.bind(this)
+        this.handleClickk = this.handleClickk.bind(this)
     }
 
     handleClick () {
