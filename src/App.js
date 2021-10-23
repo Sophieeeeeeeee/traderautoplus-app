@@ -44,9 +44,8 @@ class App extends Component {
         })
         xhr.open('GET', 'https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/senso')
         xhr.send()
-    }
-    
-     handleClickk () {
+        
+        
         var db = new XMLHttpRequest()
         db.addEventListener('load', () => {
             // update the state of the component with the result here
@@ -56,6 +55,7 @@ class App extends Component {
         db.open('GET', 'https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/database')
         db.send()
     }
+   
 
     render () {
         return (
