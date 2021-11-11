@@ -2,19 +2,48 @@ import './App.css';
 import React, {Component} from "react";
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Welcome from "./components/Welcome";
+import UserInputs from "./components/UserInputs";
 
 class App extends Component {
     constructor () {
         super()
         this.state = {
-            databasee: '',
-            senso:''
         }
+    }
+    render () {
+        return (
+            <>
+            <Router>
+                <Navbar />
+                <Switch>
+                    <Route path='/' exact component = {Welcome}/>
+                </Switch>
 
+                <Switch>
+                <Route path='/sign-up' exact component = {Signupp}/>
+                </Switch>
+
+                <Switch>
+                    <Route path='/browse' component = {DisplayCars}/>
+                </Switch>
+
+            </Router>
+            </>
+        )
+    }
+}
+
+class TestButtons extends Component{
+    constructor() {
+        super();
+        this.state = {
+            databasee: '',
+            senso:'',
+        }
         this.handleClick = this.handleClick.bind(this)
         this.handleClickk = this.handleClickk.bind(this)
     }
-
     handleClick () {
         var xhr = new XMLHttpRequest()
         xhr.addEventListener('load', () => {
@@ -37,140 +66,73 @@ class App extends Component {
         db.send()
     }
 
-    render () {
-        return (
-            <>
-            <Router>
-                <Navbar />
-                <Switch>
-                    <Route path='/' exact />
-                </Switch>
-
-            </Router>
-                <div className='App'>
-                    <UserInputs />
-                    <div>
-                        <button className='button' onClick={this.handleClick}>Senso</button>
-                        <button className='button' onClick={this.handleClickk}>Database</button>
-                        <p>{this.state.senso}</p>
-                        <p>{this.state.databasee}</p>
-                    </div>
-                </div>
-            </>
+    render(){
+        return(
+        <div>
+            <button className='button' onClick={this.handleClick}>Senso</button>
+            <button className='button' onClick={this.handleClickk}>Database</button>
+            <p>{this.state.senso}</p>
+            <p>{this.state.databasee}</p>
+        </div>
         )
     }
 }
 
-class UserInputs extends Component{
+class Signupp extends Component{
     constructor() {
         super();
-        this.state = {
-            name:'',
-            creditScore: '',
-            zipCode: '',
-            carPreferences: '',
-            maxDownPayment: '',
-            maxMonthlyPayment: ''
+        this.state={
+            UserInputsdisplay: true
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.sendPost = this.sendPost.bind(this)
     }
-
-    handleSubmit(event){
-        const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
-        event.preventDefault()
-        alert(`____Your Details____\n
-          Name : ${name}
-          Credit score : ${creditScore}
-          Location: ${zipCode}
-          Down payment: ${maxDownPayment}
-          Monthly payment: ${maxMonthlyPayment}
-        `)
-    }
-
-    handleChange(event){
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    sendPost () {
-        //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
-        const user = this.state
-        console.log(user)
-        console.log(JSON.stringify(user))
-
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(user)
-        };
-        fetch("https://jsonplaceholder.typicode.com/posts", requestOptions)
-            .then(response => response.json())
-            .then(res => console.log(res));
-    };
-
-
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>Name:
-                            <input name = "name"
-                                   type="text"
-                                   value={this.state.name}
-                                   onChange={this.handleChange}/>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>Credit Score:
-                            <input name = "creditScore"
-                                   type="text"
-                                   value={this.state.creditScore}
-                                   onChange={this.handleChange}/>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>Downpayment:
-                            <input name = "maxDownPayment"
-                                   type="text"
-                                   value={this.state.maxDownPayment}
-                                   onChange={this.handleChange}/>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>Zip Code:
-                            <input name = "zipCode"
-                                   type="text"
-                                   value={this.state.zipCode}
-                                   onChange={this.handleChange}/>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label>Monthly Budget:
-                            <input name = "maxMonthlyPayment"
-                                   type="text"
-                                   value={this.state.maxMonthlyPayment}
-                                   onChange={this.handleChange}/>
-                        </label>
-                    </div>
-
-                    <input type="submit"
-                           value="Submit" />
-
-                </form>
-
                 <div>
-                    <button className='post_request' onClick={this.sendPost}>Post</button>
+                    {/*<UserInputs />*/}
+                    <UserInputs
+                        which = {this.state.UserInputsdisplay}
+                        />
+
+                    <TestButtons />
                 </div>
-            </div>
+        )
+    }
+}
+
+class DisplayCars extends Component{
+    constructor () {
+        super()
+        this.state = {
+            UserInputsdisplay: false
+        }
+    }
+    render () {
+        return (
+            <>
+                <div>
+                    <UserInputs
+                        which = {this.state.UserInputsdisplay}
+                    />
+                </div>
+            </>
         )
     }
 
+}
+
+class SignIn extends Component{
+    constructor() {
+        super();
+        this.state={
+            registered:false,
+            loggedIn: false,
+        }
+    }
+    render(){
+        return(
+            <></>
+        )
+    }
 }
 
 export default App
