@@ -34,8 +34,10 @@ class UserInputs extends Component{
             carColor: '',
             carType: '',
             carAge: '',
-            carBrand: ''
-        }
+            carBrand: '',
+
+            postResponse: ''}
+
 
         //binds functions that updates the State variables to this object
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -52,7 +54,7 @@ class UserInputs extends Component{
      */
     handleSubmit(event){
         event.preventDefault()
-        const {name, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand} = this.state
+        const {name, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand, postResponse} = this.state
         alert(`____Your Details____\n
           Name : ${name}
           Credit score : ${creditScore}
@@ -84,7 +86,7 @@ class UserInputs extends Component{
      */
     sendPost () {
         //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
-        // const user = this.state
+        //const user = this.state
         let post = {}
         try {
             const user = this.props.location.state
@@ -104,7 +106,7 @@ class UserInputs extends Component{
                 "zip-code": user.zipCode,
                 "downpayment": user.maxDownPayment,
                 "monthlybudget": user.maxMonthlyPayment,
-                "car-preference": user.carType.value
+                "car-preference": user.carType
             };
         }
         // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
@@ -117,11 +119,11 @@ class UserInputs extends Component{
             body: JSON.stringify(post)
         };
          //
-        // var postRequest = "";
+        var postRequest = "";
         fetch("http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
             .then(response => response.json())
-            .then(response => console.log(response))
-            // .then(res => this.setState({postRequest: res}))
+            .then(response => this.setState({postResponse: response}))
+            .then(response => console.log(this.state.postResponse))
     };
 
     /**
@@ -130,7 +132,7 @@ class UserInputs extends Component{
      */
     handleCarFilter(value, action){
 
-        this.setState({ [action.name]:value})
+        this.setState({ [action.name]:value.value})
         console.log(this.state)
         console.log(this.props.location.state)
     }
@@ -155,6 +157,7 @@ class UserInputs extends Component{
                 carType = {this.state.carType}
                 carBrand = {this.state.carBrand}
                 carAge = {this.state.carAge}
+                postResponse = {this.state.postResponse}
                 handleCarFilter = {this.handleCarFilter}
                 sendPost = {this.sendPost}/>
                 </div>

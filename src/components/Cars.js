@@ -75,6 +75,8 @@ function Cars(props) {
                     </ul>
                 </div>
             </div>
+
+            {/*<p>{props.postResponse.map(x => <li>{x.loan}</li>)}</p>*/}
         </div>
     );
 }
