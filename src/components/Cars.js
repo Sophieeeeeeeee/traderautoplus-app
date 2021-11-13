@@ -3,12 +3,22 @@ import './Cars.css';
 import CardItem from './CarItem';
 import CarFilter from'./CarFilter'
 
+/**
+ * Renders browse page, calls and provide props to CarFilter, CarItem, Cars
+ * @props  {String} carColor
+ * @props  {String} carType
+ * @props  {String} carBrand
+ * @props  {String} carAge
+ * @props  {function} handleCarFilter
+ * @props  {function} sendPost
+ */
 function Cars(props) {
 
-    const getAllCars= () =>{
+    // const getAllCars= () =>{
+    // Later on, the props should contain props of carItem attributes based on backend response of which cars to display
+    // for now they are fixed (hardcoded)
+    // }
 
-
-    }
     return (
         <div className='cards'>
 

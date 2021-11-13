@@ -2,6 +2,17 @@ import React from "react";
 import '../App.css';
 import './UserInput.css';
 
+/**
+ * Renders Signup page, the form inputs, props all come from UserInputs class
+ * @props  {String} name
+ * @props  {String} maxDownPayment
+ * @props  {String} maxMonthly Payment
+ * @props  {String} zipCode
+ * @props  {String} creditScore
+ * @props  {function} handleSubmit display alert and saves user inputs to UserInputs state
+ * @props  {function} handleChange box content updates based on what user types
+ * @sendPost = {props.sendPost}
+ */
 function Signup(props){
 
     return(

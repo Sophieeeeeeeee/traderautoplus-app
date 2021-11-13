@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Renders each car item on browse page
+ * @props  {String} path click on each image to get to this path
+ * @props  {String} label label rendered
+ * @props  {String} src file path to car image
+ * @props  {String} text text under img rendered
+ */
 function CarItem(props) {
     return (
         <>
@@ -9,7 +16,7 @@ function CarItem(props) {
                     <figure className='cards__item__pic-wrap' data-category={props.label}>
                         <img
                             className='cards__item__img'
-                            alt='Travel Image'
+                            alt='Car Image'
                             src={props.src}
                         />
                     </figure>

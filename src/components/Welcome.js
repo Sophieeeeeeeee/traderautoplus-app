@@ -4,20 +4,20 @@ import '../App.css';
 import './Welcome.css';
 import ReactPlayer from 'react-player/youtube'
 
-function YoutubeEmbed(){
-    const youtubebackground = () => <div className="video-responsive">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/RcQNgQFmLCI" title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen>
-            </iframe>
-        </div>
-    return(
-        <>
-           <youtubebackground/>
-        </>
-    )
-}
+// function YoutubeEmbed(){
+//     const youtubebackground = () => <div className="video-responsive">
+//         <iframe width="560" height="315" src="https://www.youtube.com/embed/RcQNgQFmLCI" title="YouTube video player"
+//                     frameBorder="0"
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+//                     allowFullScreen>
+//             </iframe>
+//         </div>
+//     return(
+//         <>
+//            <youtubebackground/>
+//         </>
+//     )
+// }
 // const VIDEO_WIDTH = 1920;
 // const VIDEO_HEIGHT = 1080;
 // const VideoBackground = () => {
@@ -33,10 +33,12 @@ function YoutubeEmbed(){
 // };
 //export default YoutubeEmbed;
 
+/**
+ * Renders Welcome (home) page with all the fancy buttons
+ */
 class WelcomeSection extends Component{
     constructor(props) {
         super(props);
-        //this.state = {videoURL: ''}
     }
 
 

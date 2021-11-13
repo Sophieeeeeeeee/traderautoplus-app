@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
 
+/**
+ * Renders Navigation bar, takes care of resizing and elements to be displayed with css style sheet
+ */
 function Navbar(){
-    const[click, setClick] = useState(false);
+
+    const[click, setClick] = useState(false); // controls actions when click on nav bar
 
     const [button, setButton] = useState(true);
 
+    //render bar based on screen size, allow for flexible resizing
     const showButton = () => {
         if (window.innerWidth <= 960) {
             setButton(false);
@@ -23,6 +28,7 @@ function Navbar(){
 
     window.addEventListener('resize', showButton);
 
+    //handle click of bar
     const handleClick = () =>setClick(!click);
     const closeMobileMenu = () => setClick(false);
 

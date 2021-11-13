@@ -2,7 +2,19 @@ import React, {useState} from 'react';
 import Select from "react-select";
 import './Cars.css';
 
+/**
+ * Renders Dropdown car filter on browse page
+ * @props  {String} carColor dropdown option (single)
+ * @props  {String} carType dropdown option (single)
+ * @props  {String array} carBrand dropdown option (multiple)
+ * @props  {String array} carAge dropdown option (multiple)
+ * @props  {function} handleCarFilter dropDown (select)'s onChange action, updates boxes and saves inputs to UserInputs state
+ * @props  {function} sendPost submit button's onClick action, sends post request to backend to receive response
+ * @sendPost = {props.sendPost}
+ */
 function CarFilter(props){
+
+    // Below const are all dropdown options, label = displayed, value = what's saved if clicked on label
 
     const colorOptions= [
         {value:'Black', label:'Black'},
@@ -38,6 +50,7 @@ function CarFilter(props){
     return(
 
         <div>
+            {/*dropdown selects*/}
             <Select
                 name='carColor'
                 value={props.carColor}

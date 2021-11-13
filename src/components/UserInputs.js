@@ -5,6 +5,22 @@ import Signup from './Signup';
 import Cars from "./Cars";
 import { withRouter } from 'react-router-dom';
 
+/**
+ * Class that holds all information about a user, user's basic info and car preference
+ * Renders Signup or Browse page based on props
+ * @props  {boolean} which if true, renders Signup, if false, renders browse
+ * @state {String} name
+ * @state  {String} creditScore
+ * @state  {String} zipCode
+ * @state  {String} maxDownPayment
+ * @state  {String} maxMonthlyPayment
+ *
+ * @state  {String} carColor
+ * @state  {String} carType
+ * @state  {String array} carAge
+ * @state  {String array} carBrand
+ *
+ */
 class UserInputs extends Component{
     constructor(props) {
         super(props);
@@ -21,12 +37,19 @@ class UserInputs extends Component{
             carBrand: ''
         }
 
+        //binds functions that updates the State variables to this object
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sendPost = this.sendPost.bind(this);
         this.handleCarFilter = this.handleCarFilter.bind(this);
     }
 
+
+    /**
+     * handleSubmit for submit button on Signup page in Signup class,
+     * pass down this function to update state variables of UserInputs class
+     * @param  {event} onClick event of the submit button
+     */
     handleSubmit(event){
         event.preventDefault()
         const {name, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand} = this.state
@@ -37,17 +60,28 @@ class UserInputs extends Component{
           Down payment: ${maxDownPayment}
           Monthly payment: ${maxMonthlyPayment}
         `)
+
+        //this leads to browse page with all current state variables saved in props
         this.props.history.push({
             pathname: '/browse',
             state: this.state
         })
     }
 
+    /**
+     * handleChange for input boxed on Signup page in Signup class,
+     * pass down this function to update state variables of UserInputs class
+     * @param  {event} onChange event of content of box
+     */
     handleChange(event){
         this.setState({[event.target.name]: event.target.value});
         console.log(this.state)
     }
 
+    /**
+     * sendPost for Filter button on browse page in Cars class,
+     * pass down this function to update state variables of UserInputs class
+     */
     sendPost () {
         //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
         // const user = this.state
@@ -90,6 +124,10 @@ class UserInputs extends Component{
             // .then(res => this.setState({postRequest: res}))
     };
 
+    /**
+     * handleCarFilter function for detecting changes in dropdown boxed for car preference on browse page in CarFilter class
+     * pass down this function to update state variables of UserInputs class
+     */
     handleCarFilter(value, action){
 
         this.setState({ [action.name]:value})
