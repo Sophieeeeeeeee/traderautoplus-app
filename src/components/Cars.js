@@ -33,6 +33,7 @@ function Cars(props) {
 
             <h1>Check out these cars recommended to you!</h1>
             <h1>Apply filter to find the one for you!</h1>
+            {Array.from(props.postResponse).map(x => <p>{x}</p>)}
 
             {/*cars rendered below should be based on car filter (and sign up info from before)*/}
             <div className='cards__container'>
@@ -73,10 +74,11 @@ function Cars(props) {
                             path='/sign-up'
                         />
                     </ul>
+
                 </div>
             </div>
+            {/*<p>{props.postResponse}</p>*/}
 
-            {/*<p>{props.postResponse.map(x => <li>{x.loan}</li>)}</p>*/}
         </div>
     );
 }
