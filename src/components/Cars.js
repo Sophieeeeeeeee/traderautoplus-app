@@ -18,7 +18,8 @@ function Cars(props) {
     // Later on, the props should contain props of carItem attributes based on backend response of which cars to display
     // for now they are fixed (hardcoded)
     // }
-
+    console.log('test')
+    console.log(props.postResponse)
     return (
         <div className='cards'>
 
@@ -33,7 +34,8 @@ function Cars(props) {
 
             <h1>Check out these cars recommended to you!</h1>
             <h1>Apply filter to find the one for you!</h1>
-            {Array.from(props.postResponse).map(x => <p>{x}</p>)}
+            {props.postResponse && Array.from(props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}
+            {/*{props.postResponse}*/}
 
             {/*cars rendered below should be based on car filter (and sign up info from before)*/}
             <div className='cards__container'>

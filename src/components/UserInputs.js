@@ -150,7 +150,11 @@ class UserInputs extends Component{
             )
 
         } else { // if false, return browse
+            console.log('test')
+            console.log(this.state.postResponse)
+
             return(
+
                 <div>
                 <Cars
                 carColor = {this.state.carColor}
