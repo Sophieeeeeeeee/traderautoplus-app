@@ -43,13 +43,13 @@ function Cars(props) {
 
                     <ul className='cards__items'>
                         <CardItem
-                            src='/images/car1.jpeg'
+                            src='images/car1.jpeg'
                             text='Second hand BMW'
                             label='Half price!'
                             path='/services'
                         />
                         <CardItem
-                            src='/images/car2.jpeg'
+                            src={require('images/car2.jpeg')}
                             text='Second hand Mercedez'
                             label='Half price!'
                             path='/services'
