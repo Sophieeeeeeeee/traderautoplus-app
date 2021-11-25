@@ -1,6 +1,9 @@
 import React from "react";
 import '../App.css';
 import './UserInput.css';
+import SignupStep1 from "./Signup_Step1";
+import SignupStep2 from "./Signup_Step2";
+
 
 /**
  * Renders Signup page, the form inputs, props all come from UserInputs class
@@ -20,74 +23,113 @@ function Signup(props){
         <div className='form-container'>
             <div className='form-content'>
                 <form onSubmit={props.handleSubmit} className='form'>
-                    <h1>
-                        Get started with us today! Find the car and loan that best suit your needs by filling out information below!
-                    </h1>
+                {/*    <h1>*/}
+                {/*        Get started with us today! Create an account and find the car and loan that best suit your needs by filling out the information below!*/}
+                {/*    </h1>*/}
 
-                    <div className='form-inputs'>
-                        <label className='form-label'> Name:</label>
-                        <input className='form-input'
-                               name = "name"
-                               type="text"
-                               placeholder='Enter your name'
-                               value={props.name}
-                               onChange={props.handleChange}/>
-                    </div>
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'> User name:</label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "name"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your name'*/}
+        {/*                       value={props.name}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
 
-                    <div className='form-inputs'>
-                        <label className='form-label'>Downpayment:</label>
-                        <input className='form-input'
-                               name = "maxDownPayment"
-                               type="text"
-                               placeholder='Enter your down payment'
-                               value={props.maxDownPayment}
-                               onChange={props.handleChange}/>
-                    </div>
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'> Password:</label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "name"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your name'*/}
+        {/*                       value={props.name}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
 
-                    <div className='form-inputs'>
-                        <label className='form-label'> Monthly Budget:</label>
-                        <input className='form-input'
-                               name = "maxMonthlyPayment"
-                               type="text"
-                               placeholder='Enter your monthly payment budget'
-                               value={props.maxMonthlyPayment}
-                               onChange={props.handleChange}/>
-                    </div>
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'>Downpayment:</label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "maxDownPayment"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your down payment'*/}
+        {/*                       value={props.maxDownPayment}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
 
-                    <div className='form-inputs'>
-                        <label className='form-label'>Zip Code:</label>
-                        <input className='form-input'
-                               name = "zipCode"
-                               type="text"
-                               placeholder='Enter your zip code'
-                               value={props.zipCode}
-                               onChange={props.handleChange}/>
-                    </div>
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'> Monthly Budget:</label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "maxMonthlyPayment"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your monthly payment budget'*/}
+        {/*                       value={props.maxMonthlyPayment}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
+
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'>Zip Code:</label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "zipCode"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your zip code'*/}
+        {/*                       value={props.zipCode}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
 
 
-                    <div className='form-inputs'>
-                        <label className='form-label'>Credit Score: </label>
-                        <input className='form-input'
-                               name = "creditScore"
-                               type="text"
-                               placeholder='Enter your credit score'
-                               value={props.creditScore}
-                               onChange={props.handleChange}/>
-                    </div>
+        {/*            <div className='form-inputs'>*/}
+        {/*                <label className='form-label'>Credit Score: </label>*/}
+        {/*                <input className='form-input'*/}
+        {/*                       name = "creditScore"*/}
+        {/*                       type="text"*/}
+        {/*                       placeholder='Enter your credit score'*/}
+        {/*                       value={props.creditScore}*/}
+        {/*                       onChange={props.handleChange}/>*/}
+        {/*            </div>*/}
 
-                    <button className='form-input-btn' type='submit'>
-                        {/*<a href='http://localhost:3000/browse'>Submit</a>*/}
-                        Submit and go browse cars
-                    </button>
+        {/*            <button className='form-input-btn' type='submit'>*/}
+        {/*                /!*<a href='http://localhost:3000/browse'>Submit</a>*!/*/}
+        {/*                Submit and go browse cars*/}
+        {/*            </button>*/}
 
-                    {/*<button className='form-input-btn' onClick={props.sendPost}>Post</button>*/}
-                    {/*<p>{this.props.postRequest}</p>*/}
+        {/*            /!*<button className='form-input-btn' onClick={props.sendPost}>Post</button>*!/*/}
+        {/*            /!*<p>{this.props.postRequest}</p>*!/*/}
 
-                    {/*                <span className='form-input-login'>*/}
-                    {/*  Already have an account? Login <a href='#'>here</a>*/}
-                    {/*</span>*/}
+        {/*            /!*                <span className='form-input-login'>*!/*/}
+        {/*            /!*  Already have an account? Login <a href='#'>here</a>*!/*/}
+        {/*            /!*</span>*!/*/}
+
+                    <SignupStep1
+                        currentStep={props.currentStep}
+                        handleCurrentStep = {props.handleCurrentStep}
+
+                        name = {props.name}
+                        password =  {props.password}
+                        maxMonthlyPayment = {props.maxMonthlyPayment}
+                        maxDownPayment = {props.maxDownPayment}
+                        zipCode = {props.zipCode}
+                        creditScore = {props.creditScore}
+                        handleChange = {props.handleChange}
+                        handleSubmit = {props.handleSubmit}
+                        sendPost = {props.sendPost}/>
+
+                    <SignupStep2
+                        currentStep={props.currentStep}
+
+                        name = {props.name}
+                        password =  {props.password}
+                        maxMonthlyPayment = {props.maxMonthlyPayment}
+                        maxDownPayment = {props.maxDownPayment}
+                        zipCode = {props.zipCode}
+                        creditScore = {props.creditScore}
+                        handleChange = {props.handleChange}
+                        handleSubmit = {props.handleSubmit}
+                        sendPost = {props.sendPost}/>
 
                 </form>
+
+
             </div>
         </div>
 

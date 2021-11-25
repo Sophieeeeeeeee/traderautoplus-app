@@ -69,17 +69,21 @@ class WelcomeSection extends Component{
                         className='btns'
                         buttonStyle='btn--outline'
                         buttonSize='btn--large'
+                        link = '/sign-up'
                     >
                         GET STARTED
                     </Button>
+
                     <Button
                         className='btns'
                         buttonStyle='btn--primary'
                         buttonSize='btn--large'
                         onClick={console.log('hey')}
+                        link = '/sign-in'
                     >
-                        WATCH TRAILER <i className='far fa-play-circle' />
+                        Sign In <i className='far fa-play-circle' />
                     </Button>
+
                 </div>
             </div>
         )

@@ -22,14 +22,15 @@ export const Button = ({
                            type,
                            onClick,
                            buttonStyle,
-                           buttonSize
+                           buttonSize,
+                           link
                        }) => {
     const checkButtonStyle = STYLES.includes(buttonStyle) ? buttonStyle : STYLES[0]; // if no button style, default to idx 0, 'btn--primary'
 
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];// if no button size, default to idx 0, 'btn--medium'
 
     return (
-        <Link to='/sign-up' className='btn-mobile'>
+        <Link to={link} className='btn-mobile'>
             <button
                 className={`btn ${checkButtonStyle} ${checkButtonSize}`}  // how we change display based on what's passed, we set it as class name
                 onClick={onClick}

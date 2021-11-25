@@ -11,6 +11,12 @@ import TestButtons from "./components/TestButtons";
 import Welcome from "./components/Welcome";
 import UserInputs from "./components/UserInputs";
 
+
+// For sign in session using React context
+const SignedIn = React.createContext(false);
+const { Provider, Consumer } = SignedIn;
+
+
 class App extends Component {
     constructor () {
         super()
@@ -34,6 +40,10 @@ class App extends Component {
                     <Route path='/browse' component = {DisplayCars}/>
                 </Switch>
 
+                <Switch>
+                    <Route path='/sign-in' component = {SignInn}/>
+                </Switch>
+
             </Router>
             </>
         )
@@ -54,8 +64,7 @@ class Signupp extends Component{
                     <UserInputs
                         which = {this.state.UserInputsdisplay}
                         />
-
-                    <TestButtons />
+                    {/*<TestButtons />*/}
                 </div>
         )
     }
@@ -82,19 +91,19 @@ class DisplayCars extends Component{
 
 }
 
-// class SignIn extends Component{
-//     constructor() {
-//         super();
-//         this.state={
-//             registered:false,
-//             loggedIn: false,
-//         }
-//     }
-//     render(){
-//         return(
-//             <></>
-//         )
-//     }
-// }
+class SignInn extends Component{
+    constructor() {
+        super();
+        this.state={
+            // registered:false,
+            // loggedIn: false,
+        }
+    }
+    render(){
+        return(
+            <></>
+        )
+    }
+}
 
 export default App

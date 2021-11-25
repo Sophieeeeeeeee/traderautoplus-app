@@ -26,6 +26,8 @@ class UserInputs extends Component{
         super(props);
         this.state = {
             name: 'Paul',
+            password:'000',
+
             creditScore: '770',
             zipCode: 'M5S 1Z6',
             maxDownPayment: '500',
@@ -36,7 +38,8 @@ class UserInputs extends Component{
             carAge: '',
             carBrand: '',
 
-            postResponse: ''}
+            postResponse: '',
+            currentStep: 1}
 
 
         //binds functions that updates the State variables to this object
@@ -44,6 +47,8 @@ class UserInputs extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.sendPost = this.sendPost.bind(this);
         this.handleCarFilter = this.handleCarFilter.bind(this);
+
+        this.handleCurrentStep = this.handleCurrentStep.bind(this);
     }
 
 
@@ -54,14 +59,17 @@ class UserInputs extends Component{
      */
     handleSubmit(event){
         event.preventDefault()
-        const {name, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand, postResponse} = this.state
+        const {name, password, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand, postResponse} = this.state
         alert(`____Your Details____\n
           Name : ${name}
+          Password: ${password}
           Credit score : ${creditScore}
           Location: ${zipCode}
           Down payment: ${maxDownPayment}
           Monthly payment: ${maxMonthlyPayment}
         `)
+
+
 
         //this leads to browse page with all current state variables saved in props
         this.props.history.push({
@@ -71,7 +79,7 @@ class UserInputs extends Component{
     }
 
     /**
-     * handleChange for input boxed on Signup page in Signup class,
+     * handleChange for input box on Signup page in Signup class,
      * pass down this function to update state variables of UserInputs class
      * @param  {event} onChange event of content of box
      */
@@ -79,6 +87,39 @@ class UserInputs extends Component{
         this.setState({[event.target.name]: event.target.value});
         console.log(this.state)
     }
+
+    /**
+     * handleCurrentStep set currentStep to 2 to render step 2 of signup page,
+     * pass down this function to SignupStep1 as the onClick function of the 'next' button
+     */
+    handleCurrentStep(){
+        this.setState({currentStep: 2})
+    }
+
+    /**
+     * sendUserSignInPost for SignIn page
+     */
+    sendUserSignInPost () {
+        let post = {}
+        const user = this.state
+        post = {
+            "name": user.name,
+            "password": user.password
+        }
+
+        console.log(JSON.stringify(post))
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post)
+        };
+
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/signin", requestOptions)
+            .then(response => response.json())
+            // .then(response => this.setState({postResponse: response})) if sign in user inputs true
+            // .then(response => console.log(this.state.postResponse))
+    };
 
     /**
      * sendPost for Filter button on browse page in Cars class,
@@ -92,6 +133,7 @@ class UserInputs extends Component{
             const user = this.props.location.state
             post = {
                 "name": user.name,
+                "password": user.password,
                 "credit-score": user.creditScore,
                 "zip-code": user.zipCode,
                 "downpayment": user.maxDownPayment,
@@ -124,6 +166,8 @@ class UserInputs extends Component{
             .then(response => response.json())
             .then(response => this.setState({postResponse: response}))
             .then(response => console.log(this.state.postResponse))
+
+
     };
 
     /**
@@ -141,12 +185,16 @@ class UserInputs extends Component{
         if(this.props.which){ // if true, return signup
             return(<Signup
                     name = {this.state.name}
+                    password = {this.state.password}
                     maxMonthlyPayment = {this.state.maxMonthlyPayment}
+                    maxDownPayment = {this.state.maxDownPayment}
                     zipCode = {this.state.zipCode}
                     creditScore = {this.state.creditScore}
                     handleChange = {this.handleChange}
                     handleSubmit = {this.handleSubmit}
-                    sendPost = {this.sendPost}/>
+                    sendPost = {this.sendPost}
+                    currentStep={this.state.currentStep}
+                    handleCurrentStep = {this.handleCurrentStep}/>
             )
 
         } else { // if false, return browse
