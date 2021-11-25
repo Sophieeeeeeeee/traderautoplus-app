@@ -49,7 +49,7 @@ function Cars(props) {
                             path='/services'
                         />
                         <CardItem
-                            src={require('images/car2.jpeg')}
+                            src='images/car2.jpeg'
                             text='Second hand Mercedez'
                             label='Half price!'
                             path='/services'
