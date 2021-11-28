@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cars.css';
 import CardItem from './CarItem';
-import CarFilter from'./CarFilter'
+import CarFilter from './CarFilter'
 
 /**
  * Renders browse page, calls and provide props to CarFilter, CarItem, Cars

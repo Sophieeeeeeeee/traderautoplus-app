@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import '../App.css';
+import '../../app/App.css';
 import './UserInput.css';
 import Signup from './Signup';
-import Cars from "./Cars";
+import Cars from "../clientInfo/Cars";
 import { withRouter } from 'react-router-dom';
 
 /**

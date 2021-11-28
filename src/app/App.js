@@ -6,10 +6,10 @@ import './App.css';
 import React, {Component} from "react";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-import Navbar from './components/Navbar';
-import TestButtons from "./components/TestButtons";
-import Welcome from "./components/Welcome";
-import UserInputs from "./components/UserInputs";
+import Navbar from '../components/webDesign/navBar/Navbar';
+import TestButtons from "../components/webDesign/button/TestButtons";
+import Welcome from "../components/webDesign/welcome/Welcome";
+import UserInputs from "../components/clientInput/UserInputs";
 
 
 // For sign in session using React context
