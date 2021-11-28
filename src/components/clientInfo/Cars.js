@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cars.css';
 import CardItem from './CarItem';
 import CarFilter from './CarFilter'
@@ -20,6 +20,35 @@ function Cars(props) {
     // }
     console.log('test')
     console.log(props.postResponse)
+
+
+    let obj = props.postResponse
+    let ID = ''
+    let post = ''
+
+    const carInfo = []
+    const [eachCar, seteachCar] = useState('')
+
+    for (var key in obj) {
+        //console.log(key)
+        post = {key};
+        console.log(JSON.stringify(post))
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post)
+        };
+
+        var postRequest = "";
+        //fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+        fetch("http://localhost:8080/database", requestOptions)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .then(response => seteachCar(response))
+            .then(response => carInfo.push(eachCar))
+            .then(response => console.log(carInfo))
+    }
+
     return (
         <div className='cards'>
 
@@ -38,51 +67,59 @@ function Cars(props) {
             {/*{props.postResponse}*/}
 
             {/*cars rendered below should be based on car filter (and sign up info from before)*/}
+
             <div className='cards__container'>
                 <div className='cards__wrapper'>
 
-                    <ul className='cards__items'>
-                        <CardItem
-                            src='images/car1.jpeg'
-                            text='Second hand BMW'
-                            label='Half price!'
-                            path='/services'
-                        />
-                        <CardItem
-                            src='images/car2.jpeg'
-                            text='Second hand Mercedez'
-                            label='Half price!'
-                            path='/services'
-                        />
-                    </ul>
+                    {/*<ul className='cards__items'>*/}
+                    {/*    <CardItem*/}
+                    {/*        src='images/car1.jpeg'*/}
+                    {/*        text='Second hand BMW'*/}
+                    {/*        label='Half price!'*/}
+                    {/*        path='/services'*/}
+                    {/*    />*/}
+                    {/*    <CardItem*/}
+                    {/*        src='images/car2.jpeg'*/}
+                    {/*        text='Second hand Mercedez'*/}
+                    {/*        label='Half price!'*/}
+                    {/*        path='/services'*/}
+                    {/*    />*/}
+                    {/*</ul>*/}
 
-                    <ul className='cards__items'>
-                        <CardItem
-                            src='images/car3.jpeg'
-                            text='Second hand Audi'
-                            label='Min Downpayment!'
-                            path='/services'
-                        />
-                        <CardItem
-                            src='images/car4.jpeg'
-                            text='Second hand Chrysler'
-                            label='Best Deal'
-                            path='/products'
-                        />
-                        <CardItem
-                            src='images/car5.jpeg'
-                            text='Second hand Lexus'
-                            label='2017'
-                            path='/sign-up'
-                        />
+                    {/*<ul className='cards__items'>*/}
+                    {/*    <CardItem*/}
+                    {/*        src='images/car3.jpeg'*/}
+                    {/*        text='Second hand Audi'*/}
+                    {/*        label='Min Downpayment!'*/}
+                    {/*        path='/services'*/}
+                    {/*    />*/}
+                    {/*    <CardItem*/}
+                    {/*        src='images/car4.jpeg'*/}
+                    {/*        text='Second hand Chrysler'*/}
+                    {/*        label='Best Deal'*/}
+                    {/*        path='/products'*/}
+                    {/*    />*/}
+                    {/*    <CardItem*/}
+                    {/*        src='images/car5.jpeg'*/}
+                    {/*        text='Second hand Lexus'*/}
+                    {/*        label='2017'*/}
+                    {/*        path='/sign-up'*/}
+                    {/*    />*/}
+                    {/*</ul>*/}
+
+                    <ul>
+                    {carInfo.map(car => <CardItem
+                                         src={car['Model Year']}
+                                         text={car['Car']}
+                                         label={car['Car Type']}
+                                         path={car['Photo']}/>)}
                     </ul>
 
                 </div>
             </div>
-            {/*<p>{props.postResponse}</p>*/}
 
         </div>
     );
 }
 
-export default Cars;
+export default Cars

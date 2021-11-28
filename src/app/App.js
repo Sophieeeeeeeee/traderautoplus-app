@@ -10,6 +10,7 @@ import Navbar from '../components/webDesign/navBar/Navbar';
 import TestButtons from "../components/webDesign/button/TestButtons";
 import Welcome from "../components/webDesign/welcome/Welcome";
 import UserInputs from "../components/clientInput/UserInputs";
+import Signin from "../components/clientInput/Signin";
 
 
 // For sign in session using React context
@@ -94,14 +95,10 @@ class DisplayCars extends Component{
 class SignInn extends Component{
     constructor() {
         super();
-        this.state={
-            // registered:false,
-            // loggedIn: false,
-        }
     }
     render(){
         return(
-            <></>
+            <Signin />
         )
     }
 }
