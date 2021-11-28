@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import { Button } from '../button/Button';
-import '../../../app/App.css';
-import './Welcome.css';
-import ReactPlayer from 'react-player/youtube'
+import React, { Component } from "react";
+import { Button } from "../button/Button";
+import "../../../app/App.css";
+import "./Welcome.css";
+import ReactPlayer from "react-player/youtube";
 
 // function YoutubeEmbed(){
 //     const youtubebackground = () => <div className="video-responsive">
@@ -36,76 +36,72 @@ import ReactPlayer from 'react-player/youtube'
 /**
  * Renders Welcome (home) page with all the fancy buttons
  */
-class WelcomeSection extends Component{
-    constructor(props) {
-        super(props);
-    }
+class WelcomeSection extends Component {
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+    return (
+      <div className="hero-container">
+        {/*<video src='https://www.youtube.com/embed/RcQNgQFmLC' autoPlay loop muted />*/}
+        {/*<video id="background-video" loop autoPlay muted> </video>*/}
+        {/*<YoutubeEmbed/>*/}
+        {/*<video src={this.state.videoURL} type="video/mp4" />*/}
 
-    render () {
-        return (
-            <div className='hero-container'>
-                {/*<video src='https://www.youtube.com/embed/RcQNgQFmLC' autoPlay loop muted />*/}
-            {/*<video id="background-video" loop autoPlay muted> </video>*/}
-                {/*<YoutubeEmbed/>*/}
-                {/*<video src={this.state.videoURL} type="video/mp4" />*/}
+        <section className="videoplayer">
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=RcQNgQFmLCI&ab_channel=RobComeau"
+            playing
+            loop
+            muted
+            width="100%"
+            height="80%"
+          />
+        </section>
 
-                <section className='videoplayer'>
-                <ReactPlayer url='https://www.youtube.com/watch?v=RcQNgQFmLCI&ab_channel=RobComeau'
-                             playing
-                             loop
-                             muted
-                             width="100%"
-                             height="80%"/>
-                </section>
+        <h1>Find your most suitable car, and loan.</h1>
 
-                <h1>Find your most suitable car,</h1>
-                <h1>{"\n"} and loan.</h1>
+        <p>Get Started Here</p>
 
-                <p>Get Started Here</p>
+        <div className="hero-btns">
+          <Button
+            className="btns"
+            buttonStyle="btn--outline"
+            buttonSize="btn--large"
+            link="/sign-up"
+          >
+            GET STARTED
+          </Button>
 
-                <div className='hero-btns'>
-                    <Button
-                        className='btns'
-                        buttonStyle='btn--outline'
-                        buttonSize='btn--large'
-                        link = '/sign-up'
-                    >
-                        GET STARTED
-                    </Button>
-
-                    <Button
-                        className='btns'
-                        buttonStyle='btn--primary'
-                        buttonSize='btn--large'
-                        onClick={console.log('hey')}
-                        link = '/sign-in'
-                    >
-                        Sign In <i className='far fa-play-circle' />
-                    </Button>
-
-                </div>
-            </div>
-        )
-    }
+          <Button
+            className="btns"
+            buttonStyle="btn--primary"
+            buttonSize="btn--large"
+            onClick={console.log("hey")}
+            link="/sign-in"
+          >
+            Sign In <i className="far fa-play-circle" />
+          </Button>
+        </div>
+      </div>
+    );
+  }
 }
 
 class Welcome extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    render() {
-        return(
-            <>
-                <WelcomeSection />
-            </>
-        )
-
-    }
+  render() {
+    return (
+      <>
+        <WelcomeSection />
+      </>
+    );
+  }
 }
 
 export default Welcome;
-
