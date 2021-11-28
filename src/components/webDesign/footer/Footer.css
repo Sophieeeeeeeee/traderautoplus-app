@@ -1,0 +1,44 @@
+.footer-container {
+  background-color: midnightblue;
+  padding: 2rem 0rem 1rem 0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+}
+
+.footer-copyright,
+.footer-links {
+  color: aliceblue;
+}
+
+.footer-copyright {
+  border-right: 3px solid aliceblue;
+  padding-right: 2rem;
+}
+
+.footer-links {
+  padding-left: 2rem;
+}
+
+.footer-copyright-text,
+.footer-links-text {
+  text-align: center;
+}
+
+.GithubImage {
+  background-color: transparent;
+  width: 50px;
+}
+
+a.footer-link {
+  color: aliceblue;
+}
+
+a.footer-link:visited {
+  color: pink;
+}
+
+a.footer-link:hover {
+  color: red;
+}
