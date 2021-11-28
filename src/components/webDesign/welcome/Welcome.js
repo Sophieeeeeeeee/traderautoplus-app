@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Button } from './Button';
-import '../App.css';
+import { Button } from '../button/Button';
+import '../../../app/App.css';
 import './Welcome.css';
 import ReactPlayer from 'react-player/youtube'
 

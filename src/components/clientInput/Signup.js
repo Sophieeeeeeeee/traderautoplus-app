@@ -1,5 +1,5 @@
 import React from "react";
-import '../App.css';
+import '../../app/App.css';
 import './UserInput.css';
 import SignupStep1 from "./Signup_Step1";
 import SignupStep2 from "./Signup_Step2";
