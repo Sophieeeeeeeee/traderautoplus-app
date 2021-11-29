@@ -18,7 +18,8 @@ class Cars extends Component {
         super(props);
         this.state = {
             eachCar: '',
-            carInfo: []
+            carInfo: [],
+            loans: ''
         }
         this.sendIDRequest = this.sendIDRequest.bind(this);
     }
@@ -46,6 +47,10 @@ class Cars extends Component {
                 .then(response => console.log(this.state.eachCar))
 
             console.log(typeof this.state.eachCar)
+
+            let temp2 = obj[key]
+            this.setState({loans: temp2})
+
             //let temp = this.state.eachCar['Model Year']
             //console.log(temp)
             let temp = [this.state.eachCar['Model Year'],
@@ -55,7 +60,9 @@ class Cars extends Component {
                 this.state.eachCar['Dealership'],
                 this.state.eachCar['ID'],
                 this.state.eachCar['Mileage'],
-                this.state.eachCar['Photo']]
+                this.state.eachCar['Photo'],
+                this.state.loans]
+
             console.log(temp)
 
             // Object.keys(this.state.eachCar).forEach(function(key) {
@@ -65,6 +72,8 @@ class Cars extends Component {
             console.log('hye')
             this.state.carInfo.push(temp)
             console.log(this.state.carInfo)
+
+
             // var temp = JSON.parse(JSON.stringify(this.state.carInfo))
             // console.log(this.state.eachCar[1])
             //
@@ -135,33 +144,14 @@ class Cars extends Component {
                         {/*    />*/}
                         {/*</ul>*/}
 
-                        {/*<ul className='cards__items'>*/}
-                        {/*    <CardItem*/}
-                        {/*        src='images/car3.jpeg'*/}
-                        {/*        text='Second hand Audi'*/}
-                        {/*        label='Min Downpayment!'*/}
-                        {/*        path='/services'*/}
-                        {/*    />*/}
-                        {/*    <CardItem*/}
-                        {/*        src='images/car4.jpeg'*/}
-                        {/*        text='Second hand Chrysler'*/}
-                        {/*        label='Best Deal'*/}
-                        {/*        path='/products'*/}
-                        {/*    />*/}
-                        {/*    <CardItem*/}
-                        {/*        src='images/car5.jpeg'*/}
-                        {/*        text='Second hand Lexus'*/}
-                        {/*        label='2017'*/}
-                        {/*        path='/sign-up'*/}
-                        {/*    />*/}
-                        {/*</ul>*/}
-
                         <ul>
                             {this.state.carInfo.map(car => <CardItem
                                 src={car[7]}
                                 text={car[1]}
                                 label={car[2]}
-                                path={car[7]}/>)}
+                                path={car[1]}
+                                allInfo = {car}
+                                loans = {car[8]}/>)}
                         </ul>
 
                     </div>

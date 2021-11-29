@@ -11,6 +11,7 @@ import TestButtons from "../components/webDesign/button/TestButtons";
 import Welcome from "../components/webDesign/welcome/Welcome";
 import UserInputs from "../components/clientInput/UserInputs";
 import Signin from "../components/clientInput/Signin";
+import Loans from "../components/clientInfo/Loan";
 
 
 // For sign in session using React context
@@ -43,6 +44,10 @@ class App extends Component {
 
                 <Switch>
                     <Route path='/sign-in' component = {SignInn}/>
+                </Switch>
+
+                <Switch>
+                    <Route path='/car-details/:car' component = {CarDetails}/>
                 </Switch>
 
             </Router>
@@ -101,6 +106,18 @@ class SignInn extends Component{
             <Signin />
         )
     }
+}
+
+class CarDetails extends Component{
+    constructor() {
+        super();
+    }
+    render(){
+        return(
+            <Loans/>
+        )
+    }
+
 }
 
 export default App

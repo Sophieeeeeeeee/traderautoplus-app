@@ -176,7 +176,6 @@ class UserInputs extends Component{
             console.log(this.state.postResponse)
 
             return(
-
                 <div>
                 <Cars
                 carColor = {this.state.carColor}
