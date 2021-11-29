@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, {Component} from "react";
 import './Cars.css';
 import CardItem from './CarItem';
 import CarFilter from './CarFilter'
+import {JS} from "aws-amplify";
 
 /**
  * Renders browse page, calls and provide props to CarFilter, CarItem, Cars
@@ -12,114 +13,167 @@ import CarFilter from './CarFilter'
  * @props  {function} handleCarFilter
  * @props  {function} sendPost
  */
-function Cars(props) {
-
-    // const getAllCars= () =>{
-    // Later on, the props should contain props of carItem attributes based on backend response of which cars to display
-    // for now they are fixed (hardcoded)
-    // }
-    console.log('test')
-    console.log(props.postResponse)
-
-
-    let obj = props.postResponse
-    let ID = ''
-    let post = ''
-
-    const carInfo = []
-    const [eachCar, seteachCar] = useState('')
-
-    for (var key in obj) {
-        //console.log(key)
-        post = {key};
-        console.log(JSON.stringify(post))
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(post)
-        };
-
-        var postRequest = "";
-        //fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
-        fetch("http://localhost:8080/database", requestOptions)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .then(response => seteachCar(response))
-            .then(response => carInfo.push(eachCar))
-            .then(response => console.log(carInfo))
+class Cars extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            eachCar: '',
+            carInfo: []
+        }
+        this.sendIDRequest = this.sendIDRequest.bind(this);
     }
 
-    return (
-        <div className='cards'>
+    async sendIDRequest() {
+        console.log('test')
+        console.log(this.props.postResponse)
 
-            <CarFilter
-            color = {props.carColor}
-            type = {props.carType}
-            brand = {props.carBrand}
-            age = {props.carAge}
-            handleCarFilter = {props.handleCarFilter}
-            sendPost = {props.sendPost}
-            />
+        let obj = this.props.postResponse
 
-            <h1>Check out these cars recommended to you!</h1>
-            <h1>Apply filter to find the one for you!</h1>
-            {props.postResponse && Array.from(props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}
-            {/*{props.postResponse}*/}
+        for (var key in obj) {
+            //console.log(key)
+            let post = {key};
+            console.log(JSON.stringify(post))
+            const requestOptions = {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(post)
+            };
 
-            {/*cars rendered below should be based on car filter (and sign up info from before)*/}
+            const IDresponse = await fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/database", requestOptions)
+                //fetch("http://localhost:8080/database", requestOptions)
+                .then(response => response.json())
+                .then(response => this.setState({eachCar: response}))
+                .then(response => console.log(this.state.eachCar))
 
-            <div className='cards__container'>
-                <div className='cards__wrapper'>
+            console.log(typeof this.state.eachCar)
+            //let temp = this.state.eachCar['Model Year']
+            //console.log(temp)
+            let temp = [this.state.eachCar['Model Year'],
+                this.state.eachCar['Car'],
+                this.state.eachCar['Car Type'],
+                this.state.eachCar['Cost'],
+                this.state.eachCar['Dealership'],
+                this.state.eachCar['ID'],
+                this.state.eachCar['Mileage'],
+                this.state.eachCar['Photo']]
+            console.log(temp)
 
-                    {/*<ul className='cards__items'>*/}
-                    {/*    <CardItem*/}
-                    {/*        src='images/car1.jpeg'*/}
-                    {/*        text='Second hand BMW'*/}
-                    {/*        label='Half price!'*/}
-                    {/*        path='/services'*/}
-                    {/*    />*/}
-                    {/*    <CardItem*/}
-                    {/*        src='images/car2.jpeg'*/}
-                    {/*        text='Second hand Mercedez'*/}
-                    {/*        label='Half price!'*/}
-                    {/*        path='/services'*/}
-                    {/*    />*/}
-                    {/*</ul>*/}
+            // Object.keys(this.state.eachCar).forEach(function(key) {
+            //     console.log('Key : ' + key + ', Value : ' + this.state.eachCar[key])
+            // })
 
-                    {/*<ul className='cards__items'>*/}
-                    {/*    <CardItem*/}
-                    {/*        src='images/car3.jpeg'*/}
-                    {/*        text='Second hand Audi'*/}
-                    {/*        label='Min Downpayment!'*/}
-                    {/*        path='/services'*/}
-                    {/*    />*/}
-                    {/*    <CardItem*/}
-                    {/*        src='images/car4.jpeg'*/}
-                    {/*        text='Second hand Chrysler'*/}
-                    {/*        label='Best Deal'*/}
-                    {/*        path='/products'*/}
-                    {/*    />*/}
-                    {/*    <CardItem*/}
-                    {/*        src='images/car5.jpeg'*/}
-                    {/*        text='Second hand Lexus'*/}
-                    {/*        label='2017'*/}
-                    {/*        path='/sign-up'*/}
-                    {/*    />*/}
-                    {/*</ul>*/}
+            console.log('hye')
+            this.state.carInfo.push(temp)
+            console.log(this.state.carInfo)
+            // var temp = JSON.parse(JSON.stringify(this.state.carInfo))
+            // console.log(this.state.eachCar[1])
+            //
+            // temp.push(JSON.parse(JSON.stringify(this.state.eachCar)))
+            // this.setState({carInfo: temp})
 
-                    <ul>
-                    {carInfo.map(car => <CardItem
-                                         src={car['Model Year']}
-                                         text={car['Car']}
-                                         label={car['Car Type']}
-                                         path={car['Photo']}/>)}
-                    </ul>
 
+            //this.state.carInfo.push(JSON.parse(JSON.stringify(this.state.eachCar)))
+            //console.log(this.state.carInfo)
+            //let tempmap = []
+            //let info = ''
+            // for (var x in this.state.eachCar) {
+            //     console.log('hello')
+            //
+            //     info = JSON.parse(JSON.stringify(this.state.eachCar[x]))
+            //     console.log(info)
+            //
+            //     tempmap.push(JSON.parse(info))
+            //     console.log(tempmap)
+            //
+            //     //this.state.carInfo.push(JSON.parse(JSON(tempmap)))
+            //     //tempmap.set(x, this.state.eachCar[x])
+            //     //console.log(tempmap)
+            //     //this.state.carInfo.push(tempmap)
+            //     //console.log(this.state.carInfo)
+            //  }
+            //this.state.carInfo.push(idobj)
+            //console.log(this.state.carInfo)
+        }
+    }
+
+    render() {
+        return (
+            <div className='cards'>
+
+                <CarFilter
+                    color={this.props.carColor}
+                    type={this.props.carType}
+                    brand={this.props.carBrand}
+                    age={this.props.carAge}
+                    handleCarFilter={this.props.handleCarFilter}
+                    sendPost={this.props.sendPost}
+                />
+
+                <button className='filter-btn' onClick={this.sendIDRequest}>ID</button>
+
+                <h1>Check out these cars recommended to you!</h1>
+                <h1>Apply filter to find the one for you!</h1>
+                {/*{this.props.postResponse && Array.from(this.props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}*/}
+
+                {/*cars rendered below should be based on car filter (and sign up info from before)*/}
+
+                <div className='cards__container'>
+                    <div className='cards__wrapper'>
+
+                        {/*<ul className='cards__items'>*/}
+                        {/*    <CardItem*/}
+                        {/*        src='images/car1.jpeg'*/}
+                        {/*        text='Second hand BMW'*/}
+                        {/*        label='Half price!'*/}
+                        {/*        path='/services'*/}
+                        {/*    />*/}
+                        {/*    <CardItem*/}
+                        {/*        src='images/car2.jpeg'*/}
+                        {/*        text='Second hand Mercedez'*/}
+                        {/*        label='Half price!'*/}
+                        {/*        path='/services'*/}
+                        {/*    />*/}
+                        {/*</ul>*/}
+
+                        {/*<ul className='cards__items'>*/}
+                        {/*    <CardItem*/}
+                        {/*        src='images/car3.jpeg'*/}
+                        {/*        text='Second hand Audi'*/}
+                        {/*        label='Min Downpayment!'*/}
+                        {/*        path='/services'*/}
+                        {/*    />*/}
+                        {/*    <CardItem*/}
+                        {/*        src='images/car4.jpeg'*/}
+                        {/*        text='Second hand Chrysler'*/}
+                        {/*        label='Best Deal'*/}
+                        {/*        path='/products'*/}
+                        {/*    />*/}
+                        {/*    <CardItem*/}
+                        {/*        src='images/car5.jpeg'*/}
+                        {/*        text='Second hand Lexus'*/}
+                        {/*        label='2017'*/}
+                        {/*        path='/sign-up'*/}
+                        {/*    />*/}
+                        {/*</ul>*/}
+
+                        <ul>
+                            {this.state.carInfo.map(car => <CardItem
+                                src={car[7]}
+                                text={car[1]}
+                                label={car[2]}
+                                path={car[7]}/>)}
+                        </ul>
+
+                    </div>
                 </div>
+
             </div>
 
-        </div>
-    );
+        )
+
+    }
 }
+
+
 
 export default Cars

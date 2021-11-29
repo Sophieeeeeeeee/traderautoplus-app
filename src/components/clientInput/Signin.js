@@ -38,8 +38,8 @@ class Signin extends Component {
             body: JSON.stringify(post)
         };
 
-        //fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/signin", requestOptions)
-        fetch("http://localhost:8080/signin", requestOptions)
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/signin", requestOptions)
+        //fetch("http://localhost:8080/signin", requestOptions)
             .then(response => response.json())
             .then(response => this.setState({response: response}))
             .then(response => console.log(this.state.response))
