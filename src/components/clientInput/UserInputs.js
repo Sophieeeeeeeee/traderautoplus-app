@@ -97,31 +97,6 @@ class UserInputs extends Component{
     }
 
     /**
-     * sendUserSignInPost for SignIn page
-     */
-    sendUserSignInPost () {
-        let post = {}
-        const user = this.state
-        post = {
-            "name": user.name,
-            "password": user.password
-        }
-
-        console.log(JSON.stringify(post))
-
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(post)
-        };
-
-        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/signin", requestOptions)
-            .then(response => response.json())
-            // .then(response => this.setState({postResponse: response})) if sign in user inputs true
-            // .then(response => console.log(this.state.postResponse))
-    };
-
-    /**
      * sendPost for Filter button on browse page in Cars class,
      * pass down this function to update state variables of UserInputs class
      */
@@ -144,6 +119,7 @@ class UserInputs extends Component{
             const user = this.state
             post = {
                 "name": user.name,
+                "password": user.password,
                 "credit-score": user.creditScore,
                 "zip-code": user.zipCode,
                 "downpayment": user.maxDownPayment,
@@ -162,12 +138,11 @@ class UserInputs extends Component{
         };
          //
         var postRequest = "";
-        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-163-255.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+        //fetch("http://localhost:8080/traderauto-plus", requestOptions)
             .then(response => response.json())
             .then(response => this.setState({postResponse: response}))
             .then(response => console.log(this.state.postResponse))
-
-
     };
 
     /**
@@ -175,7 +150,6 @@ class UserInputs extends Component{
      * pass down this function to update state variables of UserInputs class
      */
     handleCarFilter(value, action){
-
         this.setState({ [action.name]:value.value})
         console.log(this.state)
         console.log(this.props.location.state)
@@ -202,7 +176,6 @@ class UserInputs extends Component{
             console.log(this.state.postResponse)
 
             return(
-
                 <div>
                 <Cars
                 carColor = {this.state.carColor}
@@ -211,7 +184,8 @@ class UserInputs extends Component{
                 carAge = {this.state.carAge}
                 postResponse = {this.state.postResponse}
                 handleCarFilter = {this.handleCarFilter}
-                sendPost = {this.sendPost}/>
+                sendPost = {this.sendPost}
+                />
                 </div>
             )
         }

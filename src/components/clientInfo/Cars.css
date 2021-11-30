@@ -36,11 +36,13 @@ h1 {
 
 .cards__wrapper {
     position: relative;
-    margin: 50px 0 45px;
+    margin: 40px 30px;
+    columns: 2 auto;
+
 }
 
 .cards__items {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .cards__item {

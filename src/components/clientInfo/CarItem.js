@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 /**
  * Renders each car item on browse page
@@ -12,7 +13,12 @@ function CarItem(props) {
     return (
         <>
             <li className='cards__item'>
-                <Link className='cards__item__link' to={props.path}>
+                <Link className='cards__item__link' to={
+                    {pathname: `/car-details/${props.path}`,
+                     state: {fromBrowse: true, allInfo: props.allInfo}
+                    }
+                }
+                >
                     <figure className='cards__item__pic-wrap' data-category={props.label}>
                         <img
                             className='cards__item__img'
@@ -29,4 +35,4 @@ function CarItem(props) {
     );
 }
 
-export default CarItem;
+export default  withRouter(CarItem);

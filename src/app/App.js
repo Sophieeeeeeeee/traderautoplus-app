@@ -10,7 +10,10 @@ import Navbar from "../components/webDesign/navBar/Navbar";
 import TestButtons from "../components/webDesign/button/TestButtons";
 import Welcome from "../components/webDesign/welcome/Welcome";
 import UserInputs from "../components/clientInput/UserInputs";
+import Signin from "../components/clientInput/Signin";
+import Loans from "../components/clientInfo/Loan";
 import Footer from "../components/webDesign/footer/Footer";
+
 
 // For sign in session using React context
 const SignedIn = React.createContext(false);
@@ -39,12 +42,17 @@ class App extends Component {
           </Switch>
 
           <Switch>
-            <Route path="/sign-in" component={SignInn} />
+              <Route path='/sign-in' component = {SignInn}/>
           </Switch>
+
+          <Switch>
+              <Route path='/car-details/:car' component = {CarDetails}/>
+          </Switch>
+
           <Footer />
         </Router>
       </>
-    );
+    )
   }
 }
 
@@ -84,17 +92,28 @@ class DisplayCars extends Component {
   }
 }
 
-class SignInn extends Component {
-  constructor() {
-    super();
-    this.state = {
-      // registered:false,
-      // loggedIn: false,
-    };
-  }
-  render() {
-    return <></>;
-  }
+class SignInn extends Component{
+    constructor() {
+        super();
+    }
+    render(){
+        return(
+            <Signin />
+        )
+    }
 }
 
-export default App;
+class CarDetails extends Component{
+    constructor() {
+        super();
+    }
+    render(){
+        return(
+            <Loans/>
+        )
+    }
+
+}
+
+export default App
+

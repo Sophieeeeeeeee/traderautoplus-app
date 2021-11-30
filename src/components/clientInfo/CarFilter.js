@@ -86,6 +86,7 @@ function CarFilter(props){
             />
 
             <button className='filter-btn' onClick={props.sendPost}>Filter</button>
+            {/*<button className='filter-btn' onClick={props.sendIDRequest}>SendID</button>*/}
 
         </div>
 
