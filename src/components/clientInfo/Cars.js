@@ -24,6 +24,7 @@ class Cars extends Component {
         this.sendIDRequest = this.sendIDRequest.bind(this);
     }
 
+
     async sendIDRequest() {
         console.log('test')
         console.log(this.props.postResponse)
@@ -144,7 +145,7 @@ class Cars extends Component {
                         {/*    />*/}
                         {/*</ul>*/}
 
-                        <ul>
+                        {/*<ul>*/}
                             {this.state.carInfo.map(car => <CardItem
                                 src={car[7]}
                                 text={car[1]}
@@ -152,7 +153,7 @@ class Cars extends Component {
                                 path={car[1]}
                                 allInfo = {car}
                                 loans = {car[8]}/>)}
-                        </ul>
+                        {/*</ul>*/}
 
                     </div>
                 </div>

@@ -34,7 +34,7 @@ class UserInputs extends Component{
             maxMonthlyPayment: '2000',
 
             carColor: '',
-            carType: 'SUV',
+            carType: '',
             carAge: '',
             carBrand: '',
 
@@ -119,6 +119,7 @@ class UserInputs extends Component{
             const user = this.state
             post = {
                 "name": user.name,
+                "password": user.password,
                 "credit-score": user.creditScore,
                 "zip-code": user.zipCode,
                 "downpayment": user.maxDownPayment,
@@ -149,7 +150,6 @@ class UserInputs extends Component{
      * pass down this function to update state variables of UserInputs class
      */
     handleCarFilter(value, action){
-
         this.setState({ [action.name]:value.value})
         console.log(this.state)
         console.log(this.props.location.state)

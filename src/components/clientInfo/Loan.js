@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { withRouter } from 'react-router-dom';
+import CardItem from './CarItem';
 
 class Loans extends Component {
     constructor(props) {
@@ -23,12 +24,16 @@ class Loans extends Component {
                 return(
                     <div>
                         <h1>{x.allInfo[1]}</h1>
-                        <div>
-                            <img
-                                alt='Car Image'
-                                src={x.allInfo[7]}
-                                style={{ alignSelf: 'center' }}
-                            />
+
+                        <div className='cards__item'>
+                            <div className='cards__item__pic-wrap'>
+                                <img className='cards__item__img'
+                                    alt='Car Image'
+                                    src={x.allInfo[7]}
+                                    //style={{ alignSelf: 'center' }}
+                                />
+
+                            </div>
                         </div>
 
                         <div>
@@ -47,6 +52,7 @@ class Loans extends Component {
                             <ul>
                                 <p>{JSON.stringify(x.allInfo[8])}</p>
                             </ul>
+
                         </div>
 
 
