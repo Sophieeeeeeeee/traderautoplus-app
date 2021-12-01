@@ -12,11 +12,6 @@ class WelcomeSection extends Component {
     super(props);
   }
 
-  render() {
-    return (
-      <div className="hero-container">
-
-
     render () {
         return (
             <div className='hero-container'>
