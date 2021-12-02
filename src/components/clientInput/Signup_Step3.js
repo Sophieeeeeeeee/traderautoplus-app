@@ -18,8 +18,8 @@ function SignupStep3(props) {
     ];
 
     const advancedOptions = [
-        {value: true, label: 'yes!'},
-        {value: false, label: 'no, thank you.'},
+        {value: 'true', label: 'yes!'},
+        {value: 'false', label: 'no, thank you.'},
     ];
 
     return(
@@ -95,8 +95,8 @@ function SignupStep3(props) {
                                 <label className='form-label'>Are you a homeowner?</label>
                                 <Select
                                     name='homeowner'
-                                    onChange={props.handleCarFilter}
                                     value={props.homeowner}
+                                    onChange={props.handleCarFilter}
                                     options={homeownerOptions}
                                     placeholder='Yes/No'
                                     isMulti={false}/>

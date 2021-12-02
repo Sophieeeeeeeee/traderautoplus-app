@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 function SignupStep1(props){
 
@@ -6,11 +6,27 @@ function SignupStep1(props){
         return null
     }
 
+    let errors = {};
+
+    const validateInput  = (e) => {
+        e.preventDefault();
+
+        if (props.username.trim()) {
+            errors.username = 'Username required';
+        }
+        if (!props.password) {
+            errors.username = 'Password required';
+        }
+        console.log(errors)
+    }
+
+
+
     return(
         <div>
             <div className='form-container'>
                 <div className='form-content'>
-                    <form onSubmit={props.handleSubmit} className='form'>
+                    <form className='form'> {/*onSubmit={validateInput}*/}
                         <h1>
                             Get started with us today! Create an account!
                         </h1>
@@ -28,6 +44,7 @@ function SignupStep1(props){
                                    value={props.name}
                                    onChange={props.handleChange}/>
                         </div>
+                        {errors.password && <p>{errors.password}</p>}
 
                         <div className='form-inputs'>
                             <label className='form-label'> Password:</label>
@@ -39,14 +56,10 @@ function SignupStep1(props){
                                    onChange={props.handleChange}/>
                         </div>
 
-                        <button className='form-input-btn' type='button' onClick={props.handleCurrentStep}>
+                        <button className='form-input-btn' type = 'submit' onClick={props.stepOneNext}>
+                            {/*onClick={props.handleCurrentStep}*/}
                             Next
                         </button>
-
-                        {/*<button className='form-input-btn' type='submit'>*/}
-                        {/*    <a href='http://localhost:3000/browse'>Submit and go browse cars</a>*/}
-                        {/*</button>*/}
-
                     </form>
 
                 </div>

@@ -15,7 +15,7 @@ function CarItem(props) {
             <li className='cards__item'>
                 <Link className='cards__item__link' to={
                     {pathname: `/car-details/${props.path}`,
-                     state: {fromBrowse: true, allInfo: props.allInfo}
+                     state: {fromBrowse: true, allInfo: props.allInfo, loan: props.loan}
                     }
                 }
                 >

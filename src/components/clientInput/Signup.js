@@ -38,7 +38,8 @@ function Signup(props){
                         creditScore = {props.creditScore}
                         handleChange = {props.handleChange}
                         handleSubmit = {props.handleSubmit}
-                        sendPost = {props.sendPost}/>
+                        sendPost = {props.sendPost}
+                        stepOneNext = {props.stepOneNext}/>
 
                     <SignupStep2
                         currentStep={props.currentStep}
@@ -52,7 +53,8 @@ function Signup(props){
                         creditScore = {props.creditScore}
                         handleChange = {props.handleChange}
                         handleSubmit = {props.handleSubmit}
-                        sendPost = {props.sendPost}/>
+                        sendPost = {props.sendPost}
+                        stepTwoNext = {props.stepTwoNext}/>
 
                     <SignupStep3
                         currentStep={props.currentStep}

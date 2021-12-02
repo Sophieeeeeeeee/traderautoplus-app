@@ -59,7 +59,7 @@ function SignupStep2(props){
                                    onChange={props.handleChange}/>
                         </div>
 
-                        <button className='form-input-btn' type='button' onClick={props.handleCurrentStep}>
+                        <button className='form-input-btn' type='button' onClick={props.stepTwoNext}>
                             Next
                         </button>
 
