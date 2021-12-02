@@ -29,7 +29,7 @@ function SignupStep3(props) {
                         <form onSubmit={props.handleSubmit} className='form'>
 
                             <h1>
-                                Below are <b>optional</b> inputs if you'd like to be an advanced user and get more tailored recommendations of cars!
+                                Below are <b>optional</b> inputs if you'd like to be an advanced user and get more tailored recommendations of cars and loans!
                             </h1>
 
                             <h1>
@@ -37,6 +37,7 @@ function SignupStep3(props) {
                             </h1>
 
                             <div className='form-inputs'>
+                                <label className='form-label'>Would you like to be an advanced user?</label>
                                 <Select
                                     name='advanced'
                                     value={props.advanced}
@@ -53,7 +54,7 @@ function SignupStep3(props) {
                                        name = "monthlyIncome"
                                        type="text"
                                        placeholder='Enter your monthly income'
-                                       value={props.maxDownPayment}
+                                       value={props.monthlyIncome}
                                        onChange={props.handleChange}/>
                             </div>
 
@@ -63,28 +64,41 @@ function SignupStep3(props) {
                                        name = "monthlyDebt"
                                        type="text"
                                        placeholder='Enter your monthly debt'
-                                       value={props.maxDownPayment}
+                                       value={props.monthlyDebt}
                                        onChange={props.handleChange}/>
                                 </div>
 
+                            {/*<div className='form-inputs'>*/}
+                            {/*    <label className='form-label'>Are you currently employed?</label>*/}
+                            {/*    <Select*/}
+                            {/*        name='employed'*/}
+                            {/*        value={props.employed}*/}
+                            {/*        onChange={props.handleCarFilter}*/}
+                            {/*        options={employedOptions}*/}
+                            {/*        placeholder='Yes/No'*/}
+                            {/*        isMulti={false}/>*/}
+                            {/*</div>*/}
+
                             <div className='form-inputs'>
+                                <label className='form-label'>Are you currently employed?</label>
                                 <Select
                                     name='employed'
                                     value={props.employed}
                                     onChange={props.handleCarFilter}
                                     options={employedOptions}
-                                    placeholder='Are you currently employed?'
+                                    placeholder='Yes/No'
                                     isMulti={false}/>
                             </div>
 
 
                             <div className='form-inputs'>
+                                <label className='form-label'>Are you a homeowner?</label>
                                 <Select
                                     name='homeowner'
-                                    value={props.homeowner}
                                     onChange={props.handleCarFilter}
+                                    value={props.homeowner}
                                     options={homeownerOptions}
-                                    placeholder='Do you own a home?'
+                                    placeholder='Yes/No'
                                     isMulti={false}/>
                             </div>
 

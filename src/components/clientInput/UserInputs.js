@@ -67,16 +67,34 @@ class UserInputs extends Component{
      */
     handleSubmit(event){
         event.preventDefault()
-        const {name, password, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand, postResponse} = this.state
-        alert(`____Your Details____\n
-          Name : ${name}
-          Password: ${password}
-          Credit score : ${creditScore}
-          Location: ${zipCode}
-          Down payment: ${maxDownPayment}
-          Monthly payment: ${maxMonthlyPayment}
-        `)
+        const {name, password, creditScore, zipCode, maxDownPayment, maxMonthlyPayment,
+                carColor, carType, carAge, carBrand,
+                postResponse, currentStep,
+                advanced, monthlyIncome,monthlyDebt, employed, homeowner} = this.state
 
+        if (this.state.advanced == 'false'){
+            alert(`____Your Details____\n
+              Name : ${name}
+              Password: ${password}
+              Credit score : ${creditScore}
+              Location: ${zipCode}
+              Down payment: ${maxDownPayment}
+              Monthly payment: ${maxMonthlyPayment}
+            `)
+        }else{
+            alert(`____Your Details (Advanced) ____\n
+              Name : ${name}
+              Password: ${password}
+              Credit score : ${creditScore}
+              Location: ${zipCode}
+              Down payment: ${maxDownPayment}
+              Monthly payment: ${maxMonthlyPayment}
+              monthlyIncome:${monthlyIncome}
+              monthlyDebt:${monthlyDebt}
+              employed:${employed}
+              homeowner:${monthlyIncome}
+            `)
+        }
 
         //this leads to browse page with all current state variables saved in props
         this.props.history.push({
@@ -115,31 +133,61 @@ class UserInputs extends Component{
         //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
         //const user = this.state
         let post = {}
-        try {
-            const user = this.props.location.state
-            post = {
-                "name": user.name,
-                "password": user.password,
-                "credit-score": user.creditScore,
-                "zip-code": user.zipCode,
-                "downpayment": user.maxDownPayment,
-                "monthlybudget": user.maxMonthlyPayment,
-                "car-preference": this.state.carType
-            };
-        } catch (err){
-            const user = this.state
-            post = {
-                "name": user.name,
-                "password": user.password,
-                "credit-score": user.creditScore,
-                "zip-code": user.zipCode,
-                "downpayment": user.maxDownPayment,
-                "monthlybudget": user.maxMonthlyPayment,
-                "car-preference": user.carType
-            };
+        if (this.state.advanced == 'false') {
+            try {
+                const user = this.props.location.state
+                post = {
+                    "name": user.name,
+                    "password": user.password,
+                    "credit-score": user.creditScore,
+                    "zip-code": user.zipCode,
+                    "downpayment": user.maxDownPayment,
+                    "monthlybudget": user.maxMonthlyPayment,
+                    "car-preference": this.state.carType
+                };
+            } catch (err) {
+                // const user = this.state
+                // post = {
+                //     "name": user.name,
+                //     "password": user.password,
+                //     "credit-score": user.creditScore,
+                //     "zip-code": user.zipCode,
+                //     "downpayment": user.maxDownPayment,
+                //     "monthlybudget": user.maxMonthlyPayment,
+                //     "car-preference": user.carType
+                //
+                // call function to display please sign in sign up: You have not inputted required info, please go to sign in or sign up
+            }
+        } else{
+            try {
+                const user = this.props.location.state
+                post = {
+                    "name": user.name,
+                    "password": user.password,
+                    "credit-score": user.creditScore,
+                    "zip-code": user.zipCode,
+                    "downpayment": user.maxDownPayment,
+                    "monthlybudget": user.maxMonthlyPayment,
+                    "car-preference": this.state.carType,
+                    "monthlydebt": user.monthlyDebt,
+                    "monthlyincome":user.monthlyIncome,
+                    "employed": user.employed,
+                    "homeowner": user.homeowner
+                };
+            } catch (err) {
+                const user = this.state
+                // post = {
+                //     "name": user.name,
+                //     "password": user.password,
+                //     "credit-score": user.creditScore,
+                //     "zip-code": user.zipCode,
+                //     "downpayment": user.maxDownPayment,
+                //     "monthlybudget": user.maxMonthlyPayment,
+                //     "car-preference": user.carType
+                // };
+            }
+
         }
-        // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
-        // console.log(post)
         console.log(JSON.stringify(post))
 
         const requestOptions = {
@@ -147,54 +195,10 @@ class UserInputs extends Component{
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(post)
         };
-         //
-        var postRequest = "";
+
+
         fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
         //fetch("http://localhost:8080/traderauto-plus", requestOptions)
-            .then(response => response.json())
-            .then(response => this.setState({postResponse: response}))
-            .then(response => console.log(this.state.postResponse))
-    };
-
-
-    sendAdvancedPost () {
-        let post = {}
-        try {
-            const user = this.props.location.state
-            post = {
-                "name": user.name,
-                "password": user.password,
-                "credit-score": user.creditScore,
-                "zip-code": user.zipCode,
-                "downpayment": user.maxDownPayment,
-                "monthlybudget": user.maxMonthlyPayment,
-                "car-preference": this.state.carType
-            };
-        } catch (err){
-            const user = this.state
-            post = {
-                "name": user.name,
-                "password": user.password,
-                "credit-score": user.creditScore,
-                "zip-code": user.zipCode,
-                "downpayment": user.maxDownPayment,
-                "monthlybudget": user.maxMonthlyPayment,
-                "car-preference": user.carType
-            };
-        }
-        // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
-        // console.log(post)
-        console.log(JSON.stringify(post))
-
-        const requestOptions = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(post)
-        };
-        //
-        var postRequest = "";
-        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
-            //fetch("http://localhost:8080/traderauto-plus", requestOptions)
             .then(response => response.json())
             .then(response => this.setState({postResponse: response}))
             .then(response => console.log(this.state.postResponse))
