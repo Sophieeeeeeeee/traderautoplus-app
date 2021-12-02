@@ -1,0 +1,30 @@
+/*Design rendering of elements on car detail page*/
+
+.container {
+    background-color: #333;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.element {
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    cursor: move;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 1120px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+ul{
+    position: relative;
+    width: 450px;
+    padding:10px 20px;
+    color: #252e48;
+    margin: 5px 0;
+}
+

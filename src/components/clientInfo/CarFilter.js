@@ -84,8 +84,6 @@ function CarFilter(props){
             {/*    placeholder='Select vehicle age'*/}
             {/*    isMulti={true}*/}
             {/*/>*/}
-
-            <button className='filter-btn' onClick={props.sendPost}>Filter</button>
             {/*<button className='filter-btn' onClick={props.sendIDRequest}>SendID</button>*/}
 
         </div>

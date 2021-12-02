@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import './Cars.css';
 import CardItem from './CarItem';
 import CarFilter from './CarFilter'
-import {JS} from "aws-amplify";
 
 /**
  * Renders browse page, calls and provide props to CarFilter, CarItem, Cars
@@ -23,7 +22,6 @@ class Cars extends Component {
         }
         this.sendIDRequest = this.sendIDRequest.bind(this);
     }
-
 
     async sendIDRequest() {
         console.log('test')
@@ -71,7 +69,15 @@ class Cars extends Component {
             // })
 
             console.log('hye')
+
+            // for (var i = 0; i <  this.state.carInfo.length; i++) {  //Iterate through arrays in array
+            //     if (this.state.carInfo[i].indexOf(temp[1]) != -1) {
+            //         this.state.carInfo.push(temp)
+            //     }
+            // }
+
             this.state.carInfo.push(temp)
+
             console.log(this.state.carInfo)
 
 
@@ -107,61 +113,49 @@ class Cars extends Component {
     }
 
     render() {
-        return (
-            <div className='cards'>
+        if (this.props.currentStep === -1){
+            return(
+            <div>
+                <h1>Please sign in / sign up first!</h1>
+            </div>)
+        }else {
+            return (
+                <div className='cards'>
 
-                <CarFilter
-                    color={this.props.carColor}
-                    type={this.props.carType}
-                    brand={this.props.carBrand}
-                    age={this.props.carAge}
-                    handleCarFilter={this.props.handleCarFilter}
-                    sendPost={this.props.sendPost}
-                />
+                    <CarFilter
+                        color={this.props.carColor}
+                        type={this.props.carType}
+                        brand={this.props.carBrand}
+                        age={this.props.carAge}
+                        handleCarFilter={this.props.handleCarFilter}
+                        sendPost={this.props.sendPost}
+                    />
 
-                <button className='filter-btn' onClick={this.sendIDRequest}>ID</button>
+                    {/*<button className='filter-btn' onClick={this.props.sendPost}>Filter</button>*/}
+                    <button className='filter-btn' onClick={this.sendIDRequest}>Filter</button>
 
-                <h1>Check out these cars recommended to you!</h1>
-                <h1>Apply filter to find the one for you!</h1>
-                {/*{this.props.postResponse && Array.from(this.props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}*/}
+                    <h1>Check out these cars recommended to you!</h1>
+                    <h1>Apply filter to find the one for you!</h1>
+                    {/*{this.props.postResponse && Array.from(this.props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}*/}
 
-                {/*cars rendered below should be based on car filter (and sign up info from before)*/}
+                    {/*cars rendered below should be based on car filter (and sign up info from before)*/}
 
-                <div className='cards__container'>
-                    <div className='cards__wrapper'>
-
-                        {/*<ul className='cards__items'>*/}
-                        {/*    <CardItem*/}
-                        {/*        src='images/car1.jpeg'*/}
-                        {/*        text='Second hand BMW'*/}
-                        {/*        label='Half price!'*/}
-                        {/*        path='/services'*/}
-                        {/*    />*/}
-                        {/*    <CardItem*/}
-                        {/*        src='images/car2.jpeg'*/}
-                        {/*        text='Second hand Mercedez'*/}
-                        {/*        label='Half price!'*/}
-                        {/*        path='/services'*/}
-                        {/*    />*/}
-                        {/*</ul>*/}
-
-
-                            {this.state.carInfo.map(car => <ul className='cards__items'> <CardItem
+                    <div className='cards__container'>
+                        <div className='cards__wrapper'>
+                            {this.state.carInfo.map(car => <ul className='cards__items'><CardItem
                                 src={car[7]}
                                 text={car[1]}
                                 label={car[2]}
                                 path={car[1]}
-                                allInfo = {car}
-                                loans = {car[8]}/></ul>)}
-
-
+                                allInfo={car}
+                                loans={car[8]}/></ul>)}
+                        </div>
                     </div>
+
                 </div>
 
-            </div>
-
-        )
-
+            )
+        }
     }
 }
 
