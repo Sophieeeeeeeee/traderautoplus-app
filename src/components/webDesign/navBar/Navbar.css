@@ -61,8 +61,14 @@
 }
 
 .nav-links:hover {
-  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid lightblue;
   transition: all 0.2s ease-out;
+}
+
+.navbar-logo:hover,
+.nav-links:hover {
+  color: lightblue;
+  text-shadow: 0 0 1px white;
 }
 
 .fa-bars {
