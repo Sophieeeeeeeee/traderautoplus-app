@@ -12,10 +12,9 @@ class WelcomeSection extends Component {
     super(props);
   }
 
-    render () {
-        return (
-            <div className='hero-container'>
-
+  render() {
+    return (
+      <div className="hero-container">
         <section className="videoplayer">
           <ReactPlayer
             url="https://www.youtube.com/watch?v=RcQNgQFmLCI&ab_channel=RobComeau"
@@ -38,7 +37,7 @@ class WelcomeSection extends Component {
             buttonSize="btn--large"
             link="/sign-up"
           >
-            GET STARTED
+            Get Started
           </Button>
 
           <Button

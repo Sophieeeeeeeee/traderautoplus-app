@@ -5,7 +5,7 @@ import "./Footer.css";
 /* A footer to our different pages that sends users to our code, various links and states our copyright.*/
 function Footer() {
   return (
-    <div className="footer-container">
+    <footer className="footer-container">
       <section className="footer-copyright">
         <h1 className="footer-copyright-heading">TRADERAUTO+</h1>
         <p className="footer-copyright-text">
@@ -35,7 +35,7 @@ function Footer() {
           <p>Browse Cars</p>
         </a>
       </section>
-    </div>
+    </footer>
   );
 }
 
