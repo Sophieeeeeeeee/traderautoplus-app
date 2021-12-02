@@ -8,9 +8,9 @@ import ReactPlayer from "react-player/youtube";
  * Renders Welcome (home) page with all the fancy buttons
  */
 class WelcomeSection extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
   render() {
     return (
@@ -26,9 +26,9 @@ class WelcomeSection extends Component {
           />
         </section>
 
-        <h1>Find your most suitable car, and loan.</h1>
+                <h1>Find your most suitable car, and loan.</h1>
 
-        <p>Get Started Here</p>
+                <p>Get Started Here</p>
 
         <div className="hero-btns">
           <Button
@@ -40,23 +40,28 @@ class WelcomeSection extends Component {
             Get Started
           </Button>
 
-          <Button
-            className="btns"
-            buttonStyle="btn--primary"
-            buttonSize="btn--large"
-            onClick={console.log("hey")}
-            link="/sign-in"
-          >
-            Sign In <i className="far fa-play-circle" />
-          </Button>
-        </div>
-      </div>
-    );
-  }
+
+                    <Button
+                        className="btns"
+                        buttonStyle="btn--primary"
+                        buttonSize="btn--large"
+                        onClick={console.log("hey")}
+                        link="/sign-in"
+                    >
+                        Sign In <i className="far fa-play-circle"/>
+                    </Button>
+                </div>
+            </div>
+        )
+    }
 }
 
+
+
+
+
 class Welcome extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {};
   }
@@ -70,4 +75,4 @@ class Welcome extends Component {
   }
 }
 
-export default Welcome;
+export default Welcome

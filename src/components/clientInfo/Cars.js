@@ -145,15 +145,15 @@ class Cars extends Component {
                         {/*    />*/}
                         {/*</ul>*/}
 
-                        {/*<ul>*/}
-                            {this.state.carInfo.map(car => <CardItem
+
+                            {this.state.carInfo.map(car => <ul className='cards__items'> <CardItem
                                 src={car[7]}
                                 text={car[1]}
                                 label={car[2]}
                                 path={car[1]}
                                 allInfo = {car}
-                                loans = {car[8]}/>)}
-                        {/*</ul>*/}
+                                loans = {car[8]}/></ul>)}
+
 
                     </div>
                 </div>
