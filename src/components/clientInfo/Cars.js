@@ -132,7 +132,7 @@ class Cars extends Component {
                     />
 
                     {/*<button className='filter-btn' onClick={this.props.sendPost}>Filter</button>*/}
-                    <button className='filter-btn' onClick={this.sendIDRequest}>ID</button>
+                    <button className='filter-btn' onClick={this.sendIDRequest}>Filter</button>
 
                     <h1>Check out these cars recommended to you!</h1>
                     <h1>Apply filter to find the one for you!</h1>

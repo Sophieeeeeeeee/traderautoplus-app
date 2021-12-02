@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { withRouter } from 'react-router-dom';
 import './Cars.css';
+import './Loan.css';
 
 class Loans extends Component {
     constructor(props) {
@@ -91,7 +92,7 @@ class Loans extends Component {
                             {/*    <p>{JSON.stringify(x.allInfo[8])}</p>*/}
                             {/*</ul>*/}
 
-                            {this.state.loanList.map(loan => <ul className='cards__container'>
+                            {this.state.loanList.map(loan => <ul className='element'>
                                 <li><p>Term: {loan[0]} months</p></li>
                                 <li><p>Predicted likelihood: {loan[1]} </p></li>
                                 <li><p>Capital: ${loan[2]}</p></li>

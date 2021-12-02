@@ -44,13 +44,16 @@ class Signin extends Component {
             .then(response => this.setState({response: response}))
             .then(response => console.log(this.state.response))
 
-        if (this.state.response == 'true'){
-
+        if (this.state.response['Authentication'] === 'Unsuccessful'){
+            alert(`Sorry Log in unsuccessful, please try again.`)
         } else{
-
+            // this.props.history.push({
+            //     pathname: '/browse'
+            // })
+            window.open("/browse");
         }
 
-        }
+    }
 
 
     handleChange(event){
