@@ -85,8 +85,7 @@ function SignupStep3(props) {
                                     onChange={props.handleCarFilter}
                                     options={homeownerOptions}
                                     placeholder='Do you own a home?'
-                                    isMulti={false}
-                                />
+                                    isMulti={false}/>
                             </div>
 
                             <button className='form-input-btn' type='submit' onClick={props.handleSubmit}>
