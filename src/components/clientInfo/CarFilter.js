@@ -51,13 +51,13 @@ function CarFilter(props){
 
         <div>
             {/*dropdown selects*/}
-            <Select
-                name='carColor'
-                value={props.carColor}
-                onChange={props.handleCarFilter}
-                options={colorOptions}
-                placeholder='Select vehicle color'
-            />
+            {/*<Select*/}
+            {/*    name='carColor'*/}
+            {/*    value={props.carColor}*/}
+            {/*    onChange={props.handleCarFilter}*/}
+            {/*    options={colorOptions}*/}
+            {/*    placeholder='Select vehicle color'*/}
+            {/*/>*/}
             <Select
                 name='carType'
                 value={props.carType}
@@ -66,24 +66,24 @@ function CarFilter(props){
                 placeholder='Select vehicle type'
             />
 
-            <Select
-                name='carBrand'
-                value={props.carBrand}
-                onChange={props.handleCarFilter}
-                options={brandOptions}
-                placeholder='Select vehicle brand(s)'
-                isMulti={true}
-                isSearchable={true}
-            />
+            {/*<Select*/}
+            {/*    name='carBrand'*/}
+            {/*    value={props.carBrand}*/}
+            {/*    onChange={props.handleCarFilter}*/}
+            {/*    options={brandOptions}*/}
+            {/*    placeholder='Select vehicle brand(s)'*/}
+            {/*    isMulti={true}*/}
+            {/*    isSearchable={true}*/}
+            {/*/>*/}
 
-            <Select
-                name='carAge'
-                value={props.carAge}
-                onChange={props.handleCarFilter}
-                options={ageOptions}
-                placeholder='Select vehicle age'
-                isMulti={true}
-            />
+            {/*<Select*/}
+            {/*    name='carAge'*/}
+            {/*    value={props.carAge}*/}
+            {/*    onChange={props.handleCarFilter}*/}
+            {/*    options={ageOptions}*/}
+            {/*    placeholder='Select vehicle age'*/}
+            {/*    isMulti={true}*/}
+            {/*/>*/}
 
             <button className='filter-btn' onClick={props.sendPost}>Filter</button>
             {/*<button className='filter-btn' onClick={props.sendIDRequest}>SendID</button>*/}

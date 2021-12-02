@@ -25,13 +25,13 @@ class UserInputs extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: 'Paul',
-            password:'000',
+            name: '',
+            password:'',
 
-            creditScore: '770',
-            zipCode: 'M5S 1Z6',
-            maxDownPayment: '500',
-            maxMonthlyPayment: '2000',
+            creditScore: '',
+            zipCode: '',
+            maxDownPayment: '',
+            maxMonthlyPayment: '',
 
             carColor: '',
             carType: '',
@@ -39,7 +39,14 @@ class UserInputs extends Component{
             carBrand: '',
 
             postResponse: '',
-            currentStep: 1}
+            currentStep: 1,
+
+            advanced:'false',
+            monthlyIncome: '',
+            monthlyDebt:'',
+            employed: '',
+            homeowner:''
+        }
 
 
         //binds functions that updates the State variables to this object
@@ -48,7 +55,8 @@ class UserInputs extends Component{
         this.sendPost = this.sendPost.bind(this);
         this.handleCarFilter = this.handleCarFilter.bind(this);
 
-        this.handleCurrentStep = this.handleCurrentStep.bind(this);
+        this.handleCurrentStep2 = this.handleCurrentStep2.bind(this);
+        this.handleCurrentStep3 = this.handleCurrentStep3.bind(this);
     }
 
 
@@ -68,7 +76,6 @@ class UserInputs extends Component{
           Down payment: ${maxDownPayment}
           Monthly payment: ${maxMonthlyPayment}
         `)
-
 
 
         //this leads to browse page with all current state variables saved in props
@@ -92,8 +99,12 @@ class UserInputs extends Component{
      * handleCurrentStep set currentStep to 2 to render step 2 of signup page,
      * pass down this function to SignupStep1 as the onClick function of the 'next' button
      */
-    handleCurrentStep(){
+    handleCurrentStep2(){
         this.setState({currentStep: 2})
+    }
+
+    handleCurrentStep3(){
+        this.setState({currentStep: 3})
     }
 
     /**
@@ -145,6 +156,51 @@ class UserInputs extends Component{
             .then(response => console.log(this.state.postResponse))
     };
 
+
+    sendAdvancedPost () {
+        let post = {}
+        try {
+            const user = this.props.location.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": this.state.carType
+            };
+        } catch (err){
+            const user = this.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": user.carType
+            };
+        }
+        // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
+        // console.log(post)
+        console.log(JSON.stringify(post))
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post)
+        };
+        //
+        var postRequest = "";
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+            //fetch("http://localhost:8080/traderauto-plus", requestOptions)
+            .then(response => response.json())
+            .then(response => this.setState({postResponse: response}))
+            .then(response => console.log(this.state.postResponse))
+    };
+
+
     /**
      * handleCarFilter function for detecting changes in dropdown boxed for car preference on browse page in CarFilter class
      * pass down this function to update state variables of UserInputs class
@@ -168,7 +224,16 @@ class UserInputs extends Component{
                     handleSubmit = {this.handleSubmit}
                     sendPost = {this.sendPost}
                     currentStep={this.state.currentStep}
-                    handleCurrentStep = {this.handleCurrentStep}/>
+                    handleCurrentStep2 = {this.handleCurrentStep2}
+                    handleCurrentStep3 = {this.handleCurrentStep3}
+
+                    advanced = {this.state.advanced}
+                    monthlyIncome = {this.state.monthlyIncome}
+                    monthlyDebt = {this.state.monthlyDebt}
+                    employed = {this.state.employed}
+                    homeowner = {this.state.homeowner}
+                    handleCarFilter = {this.handleCarFilter}
+                />
             )
 
         } else { // if false, return browse

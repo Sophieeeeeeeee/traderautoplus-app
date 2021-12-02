@@ -3,59 +3,59 @@ import { Button } from "../button/Button";
 import "../../../app/App.css";
 import "./Welcome.css";
 import ReactPlayer from "react-player/youtube";
-import {constructor} from "react-xml-parser";
 
 /**
  * Renders Welcome (home) page with all the fancy buttons
  */
 class WelcomeSection extends Component {
-  constructor(props) {
-    super(props);
-  }
+    constructor(props) {
+        super(props);
+    }
 
-  render() {
-    return (
-        <div className="hero-container">
+    render() {
+        return (
+            <div className="hero-container">
 
-          <section className="videoplayer">
-            <ReactPlayer
-                url="https://www.youtube.com/watch?v=RcQNgQFmLCI&ab_channel=RobComeau"
-                playing
-                loop
-                muted
-                width="100%"
-                height="80%"
-            />
-          </section>
+                <section className="videoplayer">
+                    <ReactPlayer
+                        url="https://www.youtube.com/watch?v=RcQNgQFmLCI&ab_channel=RobComeau"
+                        playing
+                        loop
+                        muted
+                        width="100%"
+                        height="100%"
+                    />
+                </section>
 
-          <h1>Find your most suitable car, and loan.</h1>
+                <h1>Find your most suitable car, and loan.</h1>
 
-          <p>Get Started Here</p>
+                <p>Get Started Here</p>
 
-          <div className="hero-btns">
-            <Button
-                className="btns"
-                buttonStyle="btn--outline"
-                buttonSize="btn--large"
-                link="/sign-up"
-            >
-              GET STARTED
-            </Button>
+                <div className="hero-btns">
+                    <Button
+                        className="btns"
+                        buttonStyle="btn--outline"
+                        buttonSize="btn--large"
+                        link="/sign-up"
+                    >
+                        GET STARTED
+                    </Button>
 
-            <Button
-                className="btns"
-                buttonStyle="btn--primary"
-                buttonSize="btn--large"
-                onClick={console.log("hey")}
-                link="/sign-in"
-            >
-              Sign In <i className="far fa-play-circle"/>
-            </Button>
-          </div>
-        </div>
-    )
-  }
+                    <Button
+                        className="btns"
+                        buttonStyle="btn--primary"
+                        buttonSize="btn--large"
+                        onClick={console.log("hey")}
+                        link="/sign-in"
+                    >
+                        Sign In <i className="far fa-play-circle"/>
+                    </Button>
+                </div>
+            </div>
+        )
+    }
 }
+
 
 
 
