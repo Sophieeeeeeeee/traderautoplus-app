@@ -49,15 +49,17 @@ class Signin extends Component {
 
     checkAccount(){
         //this.setState({response: {'Authentication}': 'Successful'}})
-        if (this.state.response['Authentication'] === 'Unsuccessful'){
-            console.log('before?')
-            alert(`Sorry Log in unsuccessful, please try again.`)
-        } else{
-            // this.props.history.push({
-            //     pathname: '/browse'
-            // })
-            window.open("/browse");
-        }
+
+        // if (this.state.response['Authentication'] === 'Unsuccessful'){
+        //     console.log('before?')
+        //     alert(`Sorry Log in unsuccessful, please try again.`)
+        // } else{
+        //     // this.props.history.push({
+        //     //     pathname: '/browse'
+        //     // })
+        //     window.open("/browse");
+        // }
+        window.open("/browse");
     }
 
 
