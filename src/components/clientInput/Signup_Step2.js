@@ -18,7 +18,7 @@ function SignupStep2(props) {
               <input
                 className="form-input"
                 name="maxDownPayment"
-                type="text"
+                type="Number"
                 placeholder="Enter your down payment"
                 value={props.maxDownPayment}
                 onChange={props.handleChange}
@@ -30,7 +30,7 @@ function SignupStep2(props) {
               <input
                 className="form-input"
                 name="maxMonthlyPayment"
-                type="text"
+                type="Number"
                 placeholder="Enter your monthly payment budget"
                 value={props.maxMonthlyPayment}
                 onChange={props.handleChange}
@@ -54,7 +54,7 @@ function SignupStep2(props) {
               <input
                 className="form-input"
                 name="creditScore"
-                type="text"
+                type="Number"
                 placeholder="Enter your credit score"
                 value={props.creditScore}
                 onChange={props.handleChange}
