@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-
+import { useHistory } from "react-router-dom";
 /**
  * Renders each car item on browse page
  * @props  {String} path click on each image to get to this path
@@ -9,6 +9,14 @@ import { withRouter } from 'react-router-dom';
  * @props  {String} src file path to car image
  * @props  {String} text text under img rendered
  */
+
+// function jump(){
+//     let history = useHistory();
+//     history.pushState({fromBrowse: true, allInfo: props.allInfo, loan: props.loan}, `/car-details/${props.path}`)
+//     window.open(`/car-details/${props.path}`)}}
+//
+//
+// }
 function CarItem(props) {
     return (
         <>
@@ -18,6 +26,9 @@ function CarItem(props) {
                      state: {fromBrowse: true, allInfo: props.allInfo, loan: props.loan}
                     }
                 }
+                      // onClick={ () => {
+                      //     props.history.push({fromBrowse: true, allInfo: props.allInfo, loan: props.loan}, `/car-details/${props.path}`)
+                      //     window.open(`/car-details/${props.path}`)}}
                 >
                     <figure className='cards__item__pic-wrap' data-category={props.label}>
                         <img

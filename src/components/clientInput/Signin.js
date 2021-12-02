@@ -43,8 +43,14 @@ class Signin extends Component {
             .then(response => response.json())
             .then(response => this.setState({response: response}))
             .then(response => console.log(this.state.response))
+            .then(response => this.checkAccount())
 
+    }
+
+    checkAccount(){
+        //this.setState({response: {'Authentication}': 'Successful'}})
         if (this.state.response['Authentication'] === 'Unsuccessful'){
+            console.log('before?')
             alert(`Sorry Log in unsuccessful, please try again.`)
         } else{
             // this.props.history.push({
@@ -52,7 +58,6 @@ class Signin extends Component {
             // })
             window.open("/browse");
         }
-
     }
 
 
