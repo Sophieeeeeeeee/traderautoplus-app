@@ -25,13 +25,13 @@ class UserInputs extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: 'paul',
-            password:'123',
+            name: '',
+            password:'',
 
-            creditScore: '770',
-            zipCode: 'm5z1z6',
-            maxDownPayment: '500',
-            maxMonthlyPayment: '360',
+            creditScore: '',
+            zipCode: '',
+            maxDownPayment: '',
+            maxMonthlyPayment: '',
 
             carColor: '',
             carType: '',
@@ -41,26 +41,22 @@ class UserInputs extends Component{
             postResponse: '',
             currentStep: 1,
 
-            advanced:'true',
-            monthlyIncome: '8500',
-            monthlyDebt:'500',
-            employed: 'employed',
-            homeowner:'homeowner'
+            advanced:'false',
+            monthlyIncome: '',
+            monthlyDebt:'',
+            employed: '',
+            homeowner:''
         }
+
 
         //binds functions that updates the State variables to this object
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sendPost = this.sendPost.bind(this);
         this.handleCarFilter = this.handleCarFilter.bind(this);
-        this.handleCarFilterr = this.handleCarFilterr.bind(this);
 
         this.handleCurrentStep2 = this.handleCurrentStep2.bind(this);
         this.handleCurrentStep3 = this.handleCurrentStep3.bind(this);
-
-        this.stepOneNext = this.stepOneNext.bind(this);
-        this.stepTwoNext = this.stepTwoNext.bind(this);
-
     }
 
 
@@ -71,34 +67,16 @@ class UserInputs extends Component{
      */
     handleSubmit(event){
         event.preventDefault()
-        const {name, password, creditScore, zipCode, maxDownPayment, maxMonthlyPayment,
-                carColor, carType, carAge, carBrand,
-                postResponse, currentStep,
-                advanced, monthlyIncome,monthlyDebt, employed, homeowner} = this.state
+        const {name, password, creditScore, zipCode, maxDownPayment, maxMonthlyPayment, carColor, carType, carAge, carBrand, postResponse} = this.state
+        alert(`____Your Details____\n
+          Name : ${name}
+          Password: ${password}
+          Credit score : ${creditScore}
+          Location: ${zipCode}
+          Down payment: ${maxDownPayment}
+          Monthly payment: ${maxMonthlyPayment}
+        `)
 
-        if (this.state.advanced == 'false'){
-            alert(`____Your Details____\n
-              Name : ${name}
-              Password: ${password}
-              Credit score : ${creditScore}
-              Location: ${zipCode}
-              Down payment: ${maxDownPayment}
-              Monthly payment: ${maxMonthlyPayment}
-            `)
-        }else{
-            alert(`____Your Details (Advanced) ____\n
-              Name : ${name}
-              Password: ${password}
-              Credit score : ${creditScore}
-              Location: ${zipCode}
-              Down payment: ${maxDownPayment}
-              Monthly payment: ${maxMonthlyPayment}
-              monthlyIncome:${monthlyIncome}
-              monthlyDebt:${monthlyDebt}
-              employed:${employed}
-              homeowner:${monthlyIncome}
-            `)
-        }
 
         //this leads to browse page with all current state variables saved in props
         this.props.history.push({
@@ -123,14 +101,6 @@ class UserInputs extends Component{
      */
     handleCurrentStep2(){
         this.setState({currentStep: 2})
-        // let errors = {};
-        // if (this.state.username.trim()) {
-        //     errors.username = 'Username required';
-        // }
-        // if (!this.state.password) {
-        //     errors.username = 'Password required';
-        // }
-        // return errors
     }
 
     handleCurrentStep3(){
@@ -143,59 +113,93 @@ class UserInputs extends Component{
      */
     sendPost () {
         //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
-        //const user = this.state //check valid inputs
+        //const user = this.state
         let post = {}
-        try{
-        if (this.props.location.state.advanced == 'false') {
-                //const user = this.props.location.state
-                const user = this.state
-
-                post = {
-                    "name": user.name,
-                    "password": user.password,
-                    "credit-score": user.creditScore,
-                    "zip-code": user.zipCode,
-                    "downpayment": user.maxDownPayment,
-                    "monthlybudget": user.maxMonthlyPayment,
-                    "car-preference": this.state.carType
-                }
-            } else {
-                const user = this.props.location.state
-                post = {
-                    "name": user.name,
-                    "password": user.password,
-                    "credit-score": user.creditScore,
-                    "zip-code": user.zipCode,
-                    "downpayment": user.maxDownPayment,
-                    "monthlybudget": user.maxMonthlyPayment,
-                    "car-preference": this.state.carType,
-                    "monthlydebt": user.monthlyDebt,
-                    "monthlyincome": user.monthlyIncome,
-                    "employed": user.employed,
-                    "homeowner": user.homeowner
-                }
-            }
-            console.log(JSON.stringify(post))
-
-            const requestOptions = {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify(post)
+        try {
+            const user = this.props.location.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": this.state.carType
             };
-
-            fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
-                //fetch("http://localhost:8080/traderauto-plus", requestOptions)
-                .then(response => response.json())
-                .then(response => this.setState({postResponse: response}))
-                .then(response => console.log(this.state.postResponse))
-
-            //
-
-        } catch (e) {
-            // if no location state saved
-            this.setState({currentStep: -1})
+        } catch (err){
+            const user = this.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": user.carType
+            };
         }
-    }
+        // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
+        // console.log(post)
+        console.log(JSON.stringify(post))
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post)
+        };
+         //
+        var postRequest = "";
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+        //fetch("http://localhost:8080/traderauto-plus", requestOptions)
+            .then(response => response.json())
+            .then(response => this.setState({postResponse: response}))
+            .then(response => console.log(this.state.postResponse))
+    };
+
+
+    sendAdvancedPost () {
+        let post = {}
+        try {
+            const user = this.props.location.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": this.state.carType
+            };
+        } catch (err){
+            const user = this.state
+            post = {
+                "name": user.name,
+                "password": user.password,
+                "credit-score": user.creditScore,
+                "zip-code": user.zipCode,
+                "downpayment": user.maxDownPayment,
+                "monthlybudget": user.maxMonthlyPayment,
+                "car-preference": user.carType
+            };
+        }
+        // {"car-preference": "SUV", "zip-code": "M51 1S6", "downpayment": "200", "name": "Paul", "credit-score":"770" , "monthlybudget": "5000"}
+        // console.log(post)
+        console.log(JSON.stringify(post))
+
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(post)
+        };
+        //
+        var postRequest = "";
+        fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
+            //fetch("http://localhost:8080/traderauto-plus", requestOptions)
+            .then(response => response.json())
+            .then(response => this.setState({postResponse: response}))
+            .then(response => console.log(this.state.postResponse))
+    };
+
 
     /**
      * handleCarFilter function for detecting changes in dropdown boxed for car preference on browse page in CarFilter class
@@ -205,28 +209,6 @@ class UserInputs extends Component{
         this.setState({ [action.name]:value.value})
         console.log(this.state)
         console.log(this.props.location.state)
-    }
-
-    handleCarFilterr(value, action){
-        this.setState({ [action.name]:value.value})
-        this.sendPost()
-    }
-
-    stepOneNext(){
-        if (this.state.name === '' || this.state.password === ''){
-            alert('Please fill out inputs properly!')
-        }else{
-            this.setState({currentStep: 2})
-
-        }
-    }
-
-    stepTwoNext(){
-        if (this.state.maxDownPayment === '' || this.state.maxMonthlyPayment === '' || this.state.zipCode === '' || this.state.creditScore === ''){
-            alert('Please fill out inputs properly! There exits missing input(s)!')
-        }else{
-            this.setState({currentStep: 3})
-        }
     }
 
     render(){
@@ -251,10 +233,6 @@ class UserInputs extends Component{
                     employed = {this.state.employed}
                     homeowner = {this.state.homeowner}
                     handleCarFilter = {this.handleCarFilter}
-
-                    stepOneNext = {this.stepOneNext}
-                    stepTwoNext = {this.stepTwoNext}
-
                 />
             )
 
@@ -262,29 +240,19 @@ class UserInputs extends Component{
             console.log('test')
             console.log(this.state.postResponse)
 
-            if(this.state.currentStep == -1){
-                return(
-                    <div>
-                        <h1>Please sign in / sign up first!</h1>
-                    </div>
-                )
-            }else{
-
-                return(
-                    <div>
-                    <Cars
-                    carColor = {this.state.carColor}
-                    carType = {this.state.carType}
-                    carBrand = {this.state.carBrand}
-                    carAge = {this.state.carAge}
-                    postResponse = {this.state.postResponse}
-                    handleCarFilter = {this.handleCarFilterr}
-                    sendPost = {this.sendPost}
-                    currentStep = {this.state.currentStep}
-                    />
-                    </div>
-                )
-            }
+            return(
+                <div>
+                <Cars
+                carColor = {this.state.carColor}
+                carType = {this.state.carType}
+                carBrand = {this.state.carBrand}
+                carAge = {this.state.carAge}
+                postResponse = {this.state.postResponse}
+                handleCarFilter = {this.handleCarFilter}
+                sendPost = {this.sendPost}
+                />
+                </div>
+            )
         }
 
     }

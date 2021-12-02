@@ -1,74 +1,60 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 
-function SignupStep1(props){
+function SignupStep1(props) {
+  if (props.currentStep !== 1) {
+    return null;
+  }
 
-    if (props.currentStep !== 1){
-        return null
-    }
+  return (
+    <div>
+      <div className="form-container">
+        <div className="form-content">
+          <form onSubmit={props.handleSubmit} className="form">
+            <h1>Get started with us today!</h1>
+            <h2>Create an account!</h2>
 
-    let errors = {};
+            <h1 class="step">Step 1</h1>
 
-    const validateInput  = (e) => {
-        e.preventDefault();
-
-        if (props.username.trim()) {
-            errors.username = 'Username required';
-        }
-        if (!props.password) {
-            errors.username = 'Password required';
-        }
-        console.log(errors)
-    }
-
-
-
-    return(
-        <div>
-            <div className='form-container'>
-                <div className='form-content'>
-                    <form className='form'> {/*onSubmit={validateInput}*/}
-                        <h1>
-                            Get started with us today! Create an account!
-                        </h1>
-
-                        <h1>
-                            Step 1
-                        </h1>
-
-                        <div className='form-inputs'>
-                            <label className='form-label'> Username:</label>
-                            <input className='form-input'
-                                   name = "name"
-                                   type="text"
-                                   placeholder='Enter your name'
-                                   value={props.name}
-                                   onChange={props.handleChange}/>
-                        </div>
-                        {errors.password && <p>{errors.password}</p>}
-
-                        <div className='form-inputs'>
-                            <label className='form-label'> Password:</label>
-                            <input className='form-input'
-                                   name = "password"
-                                   type="text"
-                                   placeholder='Enter a password'
-                                   value={props.password}
-                                   onChange={props.handleChange}/>
-                        </div>
-
-                        <button className='form-input-btn' type = 'submit' onClick={props.stepOneNext}>
-                            {/*onClick={props.handleCurrentStep}*/}
-                            Next
-                        </button>
-                    </form>
-
-                </div>
+            <div className="form-inputs">
+              <label className="form-label"> Username:</label>
+              <input
+                className="form-input"
+                name="name"
+                type="text"
+                placeholder="Enter your Username"
+                value={props.name}
+                onChange={props.handleChange}
+              />
             </div>
 
+            <div className="form-inputs">
+              <label className="form-label"> Password:</label>
+              <input
+                className="form-input"
+                name="password"
+                type="password"
+                placeholder="Enter a password"
+                value={props.password}
+                onChange={props.handleChange}
+              />
+            </div>
 
+            <button
+              className="form-input-btn"
+              type="button"
+              onClick={props.handleCurrentStep}
+            >
+              <p class="btn-text"> Next </p>
+            </button>
 
-        </div>)
-
+            {/*<button className='form-input-btn' type='submit'>*/}
+            {/*    <a href='http://localhost:3000/browse'>Submit and go browse cars</a>*/}
+            {/*</button>*/}
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default SignupStep1
+export default SignupStep1;
