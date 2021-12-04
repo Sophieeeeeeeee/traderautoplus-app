@@ -1,30 +1,131 @@
 /*Design rendering of elements on car detail page*/
 
 .container {
-    background-color: #333;
-    padding: 1rem;
-    margin-top: 1rem;
+  background-color: #333;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.main {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
 }
 
 .element {
-    padding: 1rem;
-    background-color: white;
-    border: 1px solid black;
-    cursor: move;
+  padding: 1rem;
+  background-color: white;
+  border-top: 5px solid black;
+  cursor: move;
 
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    max-width: 1120px;
-    width: 90%;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 100px 100px 100px 100px;
+  grid-template-areas: "hd hd" "b1 b2" "b3 b4" "b5 b6";
+  justify-content: center;
+
+  max-width: 1120px;
+  width: 90%;
+  margin: 0 auto;
 }
 
-ul{
-    position: relative;
-    width: 450px;
-    padding:10px 20px;
-    color: #252e48;
-    margin: 5px 0;
+ul {
+  position: relative;
+  width: 450px;
+  padding: 10px 20px;
+  color: #252e48;
+  margin: 5px 0;
 }
 
+.cards__container {
+  padding-top: 0;
+  width: 400px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: "b1 b2" "b3 b4" "ft ft";
+}
+
+.cards__item__img {
+  position: relative;
+  width: 60%;
+  transition: all 0.2s linear;
+}
+
+.cards__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 6rem;
+  border: 5px solid darkblue;
+}
+
+.whole-list {
+  display: flexbox;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 7%;
+  padding-left: 7%;
+}
+
+.box {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid black;
+}
+
+.availability {
+  grid-area: ft;
+}
+
+.predicted {
+  grid-area: hd;
+}
+
+.boxname {
+  color: rgb(18, 18, 145);
+  margin: 0.7rem;
+}
+
+.available {
+  color: rgb(209, 14, 14);
+}
+
+.information {
+  margin: 0rem;
+  font-weight: 700;
+  padding: 0;
+}
+
+.informationloan {
+  margin: 0rem;
+  padding: 0;
+}
+
+.likelihood {
+  font-weight: 700;
+  font-size: large;
+  margin: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+.border-left {
+  border-left: 3px solid black;
+}
+
+.border-right {
+  border-right: 3px solid black;
+}
+
+.informationheader {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
