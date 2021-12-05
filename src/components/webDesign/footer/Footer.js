@@ -31,7 +31,10 @@ function Footer() {
         <a class="footer-link" href="/sign-in">
           <p>Sign In</p>
         </a>
-        <a class="footer-link" href="/browse-cars">
+        <a class="footer-link" href="/sign-up">
+          <p>Sign Up</p>
+        </a>
+        <a class="footer-link" href="/browse">
           <p>Browse Cars</p>
         </a>
       </section>
