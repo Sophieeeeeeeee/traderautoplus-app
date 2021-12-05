@@ -124,7 +124,7 @@ class Cars extends Component {
       );
     } else {
       return (
-        <div className="cards">
+        <div className="cards_car">
           <CarFilter
             color={this.props.carColor}
             type={this.props.carType}
@@ -145,10 +145,10 @@ class Cars extends Component {
 
           {/*cars rendered below should be based on car filter (and sign up info from before)*/}
 
-          <div className="cards__container">
-            <div className="cards__wrapper">
+          <div className="cards__container_car">
+            <div className="cards__wrapper_car">
               {this.state.carInfo.map((car) => (
-                <ul className="cards__items">
+                <ul className="cards__items_car">
                   <CardItem
                     src={car[7]}
                     text={car[1]}

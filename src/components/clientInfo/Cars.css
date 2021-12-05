@@ -16,7 +16,7 @@
   font-size: 1rem;
 }
 
-.cards {
+.cards_car {
   padding: 4rem;
   background: #fff;
 }
@@ -25,7 +25,7 @@ h1 {
   text-align: center;
 }
 
-.cards__container {
+.cards__container_car {
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -34,27 +34,29 @@ h1 {
   margin: 0 auto;
 }
 
-.cards__wrapper {
+.cards__wrapper_car {
   position: relative;
   margin: 40px 30px;
   columns: 1 auto;
 }
 
-.cards__items {
+.cards__items_car {
   margin-bottom: 12px;
   list-style: none;
 }
 
-.cards__item {
+.cards__item_car {
   flex: 1;
-  margin: 0 1rem;
+  margin: 3rem 1rem;
   border-radius: 10px;
+  height: 15rem;
 }
 
 .cards__item__link {
   display: flex;
   flex-flow: column;
   width: 100%;
+  height: 21.5rem;
   box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
   -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
   filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
@@ -64,10 +66,10 @@ h1 {
 }
 
 .cards__item__pic-wrap {
-  position: relative;
-  padding-top: 67%;
   overflow: hidden;
   margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .fade-img {
@@ -104,12 +106,30 @@ h1 {
   transition: all 0.2s linear;
 }
 
-.cards__item__img:hover {
+.cards__item__img_car {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 80%;
+  max-width: 100%;
+  margin-bottom: 5rem;
+  object-fit: cover;
+  transition: all 0.2s linear;
+}
+.width-full {
+  width: 100%;
+}
+
+.cards__item__img:hover,
+.cards__item__img_car:hover {
   transform: scale(1.1);
 }
 
 .cards__item__info {
-  padding: 20px 30px 30px;
+  padding: 240px 30px 30px;
 }
 
 .cards__item__text {
