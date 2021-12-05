@@ -7,18 +7,18 @@ function SignupStep3(props) {
   }
 
   const employedOptions = [
-    { value: "employed", label: "yes" },
-    { value: "not employed", label: "no" },
+    { value: "employed", label: "Yes, I am employed" },
+    { value: "not employed", label: "No, I am not employed" },
   ];
 
   const homeownerOptions = [
-    { value: "homeowner", label: "yes, I own a home" },
-    { value: "not homeowner", label: "no, I do not" },
+    { value: "homeowner", label: "Yes, I am a homeowner" },
+    { value: "not homeowner", label: "No, I am not a homeowner" },
   ];
 
   const advancedOptions = [
-    { value: "true", label: "yes!" },
-    { value: "false", label: "no, thank you." },
+    { value: "true", label: "Yes!" },
+    { value: "false", label: "No, thank you" },
   ];
 
   return (
@@ -88,7 +88,7 @@ function SignupStep3(props) {
               <Select
                 name="employed"
                 className="check"
-                value={props.employed}
+                value={props.advanced}
                 onChange={props.handleCarFilter}
                 options={employedOptions}
                 placeholder="Yes/No"
@@ -101,7 +101,7 @@ function SignupStep3(props) {
               <Select
                 name="homeowner"
                 className="check"
-                value={props.homeowner}
+                value={props.advanced}
                 onChange={props.handleCarFilter}
                 options={homeownerOptions}
                 placeholder="Yes/No"
