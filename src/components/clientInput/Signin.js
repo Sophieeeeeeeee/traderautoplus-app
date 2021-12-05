@@ -7,8 +7,8 @@ class Signin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Paul",
-      password: "123",
+      username: "",
+      password: "",
       response: "",
     };
     this.handleSignin = this.handleSignin.bind(this);

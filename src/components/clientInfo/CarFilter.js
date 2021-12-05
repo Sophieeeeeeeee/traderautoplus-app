@@ -60,7 +60,7 @@ function CarFilter(props){
             {/*/>*/}
             <Select
                 name='carType'
-                value={props.carType}
+                value={props.carColor}
                 onChange={props.handleCarFilter}
                 options={typeOptions}
                 placeholder='Select vehicle type'

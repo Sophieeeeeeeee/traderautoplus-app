@@ -25,13 +25,13 @@ class UserInputs extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: 'paul',
-            password:'123',
+            name: '',
+            password:'',
 
-            creditScore: '770',
-            zipCode: 'm5z1z6',
-            maxDownPayment: '500',
-            maxMonthlyPayment: '360',
+            creditScore: '',
+            zipCode: '',
+            maxDownPayment: '',
+            maxMonthlyPayment: '',
 
             carColor: '',
             carType: '',
@@ -41,11 +41,11 @@ class UserInputs extends Component{
             postResponse: '',
             currentStep: 1,
 
-            advanced:'true',
-            monthlyIncome: '8500',
-            monthlyDebt:'500',
-            employed: 'employed',
-            homeowner:'homeowner'
+            advanced:'',
+            monthlyIncome: '',
+            monthlyDebt:'',
+            employed: '',
+            homeowner:''
         }
 
         //binds functions that updates the State variables to this object
@@ -141,7 +141,7 @@ class UserInputs extends Component{
      * sendPost for Filter button on browse page in Cars class,
      * pass down this function to update state variables of UserInputs class
      */
-    sendPost () {
+    sendPost (value) {
         //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
         //const user = this.state //check valid inputs
         let post = {}
@@ -157,7 +157,8 @@ class UserInputs extends Component{
                     "zip-code": user.zipCode,
                     "downpayment": user.maxDownPayment,
                     "monthlybudget": user.maxMonthlyPayment,
-                    "car-preference": this.state.carType
+                    //"car-preference": this.state.carType
+                    "car-preference": value
                 }
             } else {
                 const user = this.props.location.state
@@ -168,7 +169,9 @@ class UserInputs extends Component{
                     "zip-code": user.zipCode,
                     "downpayment": user.maxDownPayment,
                     "monthlybudget": user.maxMonthlyPayment,
-                    "car-preference": this.state.carType,
+                    //"car-preference": this.state.carType,
+                    "car-preference": value,
+
                     "monthlydebt": user.monthlyDebt,
                     "monthlyincome": user.monthlyIncome,
                     "employed": user.employed,
@@ -189,8 +192,6 @@ class UserInputs extends Component{
                 .then(response => this.setState({postResponse: response}))
                 .then(response => console.log(this.state.postResponse))
 
-            //
-
         } catch (e) {
             // if no location state saved
             this.setState({currentStep: -1})
@@ -209,7 +210,8 @@ class UserInputs extends Component{
 
     handleCarFilterr(value, action){
         this.setState({ [action.name]:value.value})
-        this.sendPost()
+        console.log(this.state)
+        this.sendPost(value.value)
     }
 
     stepOneNext(){
