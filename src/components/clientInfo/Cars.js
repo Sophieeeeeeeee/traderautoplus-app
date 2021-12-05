@@ -85,33 +85,6 @@ class Cars extends Component {
 
       console.log(this.state.carInfo);
 
-      // var temp = JSON.parse(JSON.stringify(this.state.carInfo))
-      // console.log(this.state.eachCar[1])
-      //
-      // temp.push(JSON.parse(JSON.stringify(this.state.eachCar)))
-      // this.setState({carInfo: temp})
-
-      //this.state.carInfo.push(JSON.parse(JSON.stringify(this.state.eachCar)))
-      //console.log(this.state.carInfo)
-      //let tempmap = []
-      //let info = ''
-      // for (var x in this.state.eachCar) {
-      //     console.log('hello')
-      //
-      //     info = JSON.parse(JSON.stringify(this.state.eachCar[x]))
-      //     console.log(info)
-      //
-      //     tempmap.push(JSON.parse(info))
-      //     console.log(tempmap)
-      //
-      //     //this.state.carInfo.push(JSON.parse(JSON(tempmap)))
-      //     //tempmap.set(x, this.state.eachCar[x])
-      //     //console.log(tempmap)
-      //     //this.state.carInfo.push(tempmap)
-      //     //console.log(this.state.carInfo)
-      //  }
-      //this.state.carInfo.push(idobj)
-      //console.log(this.state.carInfo)
     }
   }
 

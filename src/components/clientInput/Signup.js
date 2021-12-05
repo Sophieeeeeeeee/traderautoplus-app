@@ -5,8 +5,6 @@ import SignupStep1 from "./Signup_Step1";
 import SignupStep2 from "./Signup_Step2";
 import SignupStep3 from "./Signup_Step3";
 
-
-
 /**
  * Renders Signup page, the form inputs, props all come from UserInputs class
  * @props  {String} name
@@ -74,7 +72,6 @@ function Signup(props){
                         employed = {props.employed}
                         homeowner = {props.homeowner}
                         handleCarFilter = {props.handleCarFilter}/>
-
                 </form>
 
 
