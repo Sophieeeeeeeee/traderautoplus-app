@@ -96,7 +96,7 @@ class UserInputs extends Component{
               monthlyIncome:${monthlyIncome}
               monthlyDebt:${monthlyDebt}
               employed:${employed}
-              homeowner:${monthlyIncome}
+              homeowner:${homeowner}
             `)
         }
 
