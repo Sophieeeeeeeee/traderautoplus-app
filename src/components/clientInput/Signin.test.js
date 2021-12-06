@@ -3,7 +3,10 @@ import {BrowserRouter} from "react-router-dom";
 import Signin from "../clientInput/Signin.js";
 import React from "react";
 import userEvent from "@testing-library/user-event";
+import Adapter from 'enzyme-adapter-react-16';
+import { shallow, configure } from 'enzyme';
 
+configure({adapter: new Adapter()});
 
 describe('Sign In Form', () => {
     test('Test Render', () =>{
@@ -28,5 +31,4 @@ describe('Sign In Form', () => {
         userEvent.click(button)
         expect(alertMock).toHaveBeenCalledTimes(1)
     });
-
 });

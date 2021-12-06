@@ -7,7 +7,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "../components/webDesign/navBar/Navbar";
-import TestButtons from "../components/webDesign/button/TestButtons";
 import Welcome from "../components/webDesign/welcome/Welcome";
 import UserInputs from "../components/clientInput/UserInputs";
 import Signin from "../components/clientInput/Signin";

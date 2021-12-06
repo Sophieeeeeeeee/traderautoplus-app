@@ -13,7 +13,7 @@ const SIZES = ['btn--medium', 'btn--large'];
  * Output a button object(function) with passed parameters (designated looks to be rendered (displayed) and onclick behaviours)
  * @param  {button} children other buttons that also need to be rendered (or whatever also need to be displayed along)
  * @param  {String} type   button type
- * @param  {function} onClick  onClick behaviour of this button
+ * @param  {fuonClick  onClick behaviour of this button
  * @param  {String} buttonStyle button style to be rendered (according to css file)
  * @param  {String} buttonSize button size to be rendered (according to css file)
  */

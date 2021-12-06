@@ -1,9 +1,13 @@
-import {fireEvent, render, screen, waitForElement} from "@testing-library/react";
+import {fireEvent, render, screen, waitFor, waitForElement} from "@testing-library/react";
 import SignupStep3 from './Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import {BrowserRouter} from "react-router-dom";
+import Enzyme, {shallow} from "enzyme";
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 // set up test prop
 const testProps = {
@@ -74,5 +78,5 @@ describe('Sign Up Form - Step 3', () => {
 
         expect(screen.queryByText('Interested in becoming advanced user?')).not.toBeInTheDocument()
         expect(screen.getByText('Yes!')).toBeVisible();
-    })
+    });
 });
