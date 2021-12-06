@@ -24,6 +24,8 @@ describe('CarFilter', () => {
         await waitFor(() => getByText('SUV'));
         fireEvent.click(getByText('SUV'));
 
+        expect(screen.queryByText('Select vehicle type')).not.toBeInTheDocument()
+        expect(screen.getByText('SUV')).toBeVisible();
     });
 });
 

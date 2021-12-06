@@ -1,8 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import {fireEvent, render, screen, waitForElement} from "@testing-library/react";
 import SignupStep3 from './Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
+import {BrowserRouter} from "react-router-dom";
 
 // set up test prop
 const testProps = {
@@ -34,14 +35,44 @@ describe('Sign Up Form - Step 3', () => {
             render(<SignupStep3 {...testProps}/>, container);
         });
 
-        const inputAdvance = screen.getByText("Interested in becoming advanced user?");
         const inputIncome = screen.getByPlaceholderText("Enter your monthly income");
         const inputBudget = screen.getByPlaceholderText("Enter your monthly debt");
-        userEvent.type(inputAdvance, "Yes!")
         userEvent.type(inputIncome, "500")
         userEvent.type(inputBudget, "500")
         expect(screen.getByPlaceholderText('Enter your monthly income')).toHaveValue(500)
         expect(screen.getByPlaceholderText('Enter your monthly debt')).toHaveValue(500)
-        expect(screen.getByText("Interested in becoming advanced user?")).toHaveValue("Yes!")
     });
+    const mockedOptions = [
+        { value: "true", label: "Yes!" },
+        { value: "false", label: "No, thank you" },
+    ];
+    test('Test Render List', async() => {
+        const mockedOnChange = jest.fn();
+        const { getByText } = render(<SignupStep3 {...testProps}
+            options={mockedOptions}
+            onChange={mockedOnChange} />);
+
+        const placeholder = getByText('Would you like to be an advanced user?');
+
+        expect(placeholder).toBeTruthy();
+    });
+    test('Test Select Option from List', async() => {
+        const mockedOnChange = jest.fn();
+        const { getByText, queryByTestId } = render(<SignupStep3 {...testProps}
+            options={mockedOptions}
+            onChange={mockedOnChange} />);
+
+        const mySelectComponent = queryByTestId('select-component');
+
+        expect(mySelectComponent).toBeDefined();
+        expect(mySelectComponent).not.toBeNull();
+        expect(mockedOnChange).toHaveBeenCalledTimes(0);
+
+        fireEvent.keyDown(mySelectComponent.firstChild, { key: 'ArrowDown' });
+        await waitForElement(() => getByText('Yes!'));
+        fireEvent.click(getByText('Yes!'));
+
+        expect(screen.queryByText('Interested in becoming advanced user?')).not.toBeInTheDocument()
+        expect(screen.getByText('Yes!')).toBeVisible();
+    })
 });

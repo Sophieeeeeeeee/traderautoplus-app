@@ -37,6 +37,7 @@ function SignupStep3(props) {
               <label className="form-label">
                 Would you like to be an advanced user?
               </label>
+              <div data-testid="select-component">
               <Select
                 name="advanced"
                 className="check"
@@ -46,6 +47,7 @@ function SignupStep3(props) {
                 placeholder="Interested in becoming advanced user?"
                 isMulti={false}
               />
+              </div>
             </div>
 
             <div className="form-inputs">
