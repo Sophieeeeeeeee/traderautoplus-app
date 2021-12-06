@@ -77,27 +77,6 @@ function Signup(props){
 
             </div>
         </div>
-
-        {/*<div className='form-container2'>*/}
-        {/*    <h1> Don't know your credit score? <br />*/}
-        {/*        Check this: <a href='https://www.canada.ca/en/financial-consumer-agency/services/credit-reports-score/order-credit-report.html#toc2'>*/}
-        {/*            Ordering your credit report and score*/}
-        {/*        </a>*/}
-        {/*    </h1>*/}
-
-        {/*    <img className='img' src='images/creditinfo1.png' alt='spaceship' />*/}
-        {/*    <img className='img' src='images/creditinfo2.png' alt='spaceship' />*/}
-
-        {/*    <h1> Go to TransUnion and view your credit report! <br />*/}
-        {/*        <a href='https://members.transunion.ca/tucan_en/orderStep1_form.page?offer=CANTUM10070&CID=TRANSUNION:HPB'>*/}
-        {/*            Join TransUnion*/}
-        {/*        </a>*/}
-        {/*    </h1>*/}
-        {/*    <iframe className='iframe' src="https://members.transunion.ca/tucan_en/orderStep1_form.page?offer=CANTUM10070&CID=TRANSUNION:HPB" height="200" width="300" title="Iframe Example"></iframe>*/}
-        {/*    <iframe className='iframe' src= "https://www.canada.ca/en/financial-consumer-agency/services/credit-reports-score/order-credit-report.html#toc1" height="200" width="300" title="Iframe Example"></iframe>*/}
-        {/*</div>*/}
-
-
     </div>
 )
 }

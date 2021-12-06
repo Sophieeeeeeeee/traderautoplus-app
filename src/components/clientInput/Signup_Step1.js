@@ -30,7 +30,7 @@ function SignupStep1(props) {
             <h2> Create an account! </h2>
             <h1 className="step">Step 1</h1>
             <div className="form-inputs">
-              <label className="form-label"> Username:</label>
+              <label className="form-label">Username:</label>
               <input
                 className="form-input"
                 name="name"
@@ -42,7 +42,7 @@ function SignupStep1(props) {
             </div>
             {errors.password && <p>{errors.password}</p>}
             <div className="form-inputs">
-              <label className="form-label"> Password:</label>
+              <label className="form-label">Password:</label>
               <input
                 className="form-input"
                 name="password"
