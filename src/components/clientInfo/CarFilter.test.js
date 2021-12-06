@@ -10,10 +10,16 @@ import CarFilter from './CarFilter';
 
 
 describe('CarFilter', () => {
-    test('Simulate selection of car filter', async () => {
-        const {getByText, queryByTestId} = render(<CarFilter/>);
+
+    test('Test Rendering', async () => {
+        render(<CarFilter/>);
 
         expect(screen.getByText('Select vehicle type')).toBeInTheDocument();
+
+    });
+
+    test('Test option selected', async () => {
+        const {getByText, queryByTestId} = render(<CarFilter/>);
 
         const mySelectedComponent = queryByTestId("select");
 
@@ -24,6 +30,7 @@ describe('CarFilter', () => {
         await waitFor(() => getByText('SUV'));
         fireEvent.click(getByText('SUV'));
 
+        expect(screen.getByText('SUV')).toBeVisible();
     });
 });
 
