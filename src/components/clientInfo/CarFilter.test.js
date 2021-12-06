@@ -1,26 +1,29 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import {
+    render,
+    screen,
+    fireEvent,
+    queryByTestId,
+    getByText, waitFor, getByDisplayValue,
+} from '@testing-library/react';
 import CarFilter from './CarFilter';
-import {act} from "react-dom/test-utils";
+
 
 describe('CarFilter', () => {
     test('Simulate selection of car filter', async () => {
-        // first clicking on dropdown
-        const carDropdown = await screen.getByRole('combobox', {name: 'carType'});
+        const {getByText, queryByTestId} = render(<CarFilter/>);
 
-        act(() => {
-            fireEvent.click(carDropdown);
-        });
+        expect(screen.getByText('Select vehicle type')).toBeInTheDocument();
 
-        // selecting SUV option
-        const optionOne = await screen.getByText('SUV');
+        const mySelectedComponent = queryByTestId("select");
 
-        act(() => {
-            fireEvent.click(optionOne);
-        });
+        expect(mySelectedComponent).toBeDefined();
+        expect(mySelectedComponent).not.toBeNull();
 
-        // test to make sure SUV has been selected
-        expect(carDropdown).toHaveValue('SUV');
+        fireEvent.keyDown(mySelectedComponent.firstChild, {key: 'ArrowDown'});
+        await waitFor(() => getByText('SUV'));
+        fireEvent.click(getByText('SUV'));
+
     });
 });
 

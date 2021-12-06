@@ -49,7 +49,7 @@ function CarFilter(props){
 
     return(
 
-        <div>
+        <div data-testid={"select"}>
             {/*dropdown selects*/}
             {/*<Select*/}
             {/*    name='carColor'*/}
@@ -58,13 +58,17 @@ function CarFilter(props){
             {/*    options={colorOptions}*/}
             {/*    placeholder='Select vehicle color'*/}
             {/*/>*/}
+            {/*<form data-testid="form">*/}
+            {/*<label htmlFor="label">Label</label>*/}
             <Select
+                // data-testid="car-dropdown"
                 name='carType'
                 value={props.carColor}
                 onChange={props.handleCarFilter}
                 options={typeOptions}
                 placeholder='Select vehicle type'
             />
+            {/*</form>*/}
 
             {/*<Select*/}
             {/*    name='carBrand'*/}
