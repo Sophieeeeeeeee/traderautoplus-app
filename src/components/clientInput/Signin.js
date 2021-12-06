@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../../app/App.css";
 import "./UserInput.css";
-import { withRouter } from "react-router-dom";
 
 class Signin extends Component {
   constructor(props) {
@@ -70,7 +69,7 @@ class Signin extends Component {
     return (
       <div className="form-container">
         <div className="form-content">
-          <form onSubmit={this.handleSignin} className="form">
+          <form onSubmit={this.handleSignin} className="form" data-testid="form">
             <h1>Already have an account?</h1>
             <h2> Sign in NOW! </h2>
 
@@ -103,12 +102,6 @@ class Signin extends Component {
               <p className="btn-text"> Sign in </p>
             </button>
 
-            {/*            /!*<button className='form-input-btn' onClick={props.sendPost}>Post</button>*!/*/}
-            {/*            /!*<p>{this.props.postRequest}</p>*!/*/}
-
-            {/*            /!*                <span className='form-input-login'>*!/*/}
-            {/*            /!*  Already have an account? Login <a href='#'>here</a>*!/*/}
-            {/*            /!*</span>*!/*/}
           </form>
         </div>
       </div>

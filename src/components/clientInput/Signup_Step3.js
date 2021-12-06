@@ -72,17 +72,6 @@ function SignupStep3(props) {
               />
             </div>
 
-            {/*<div className='form-inputs'>*/}
-            {/*    <label className='form-label'>Are you currently employed?</label>*/}
-            {/*    <Select*/}
-            {/*        name='employed'*/}
-            {/*        value={props.employed}*/}
-            {/*        onChange={props.handleCarFilter}*/}
-            {/*        options={employedOptions}*/}
-            {/*        placeholder='Yes/No'*/}
-            {/*        isMulti={false}/>*/}
-            {/*</div>*/}
-
             <div className="form-inputs">
               <label className="form-label">Are you currently employed?</label>
               <Select
