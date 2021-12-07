@@ -3,8 +3,10 @@ import SignupStep3 from './Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
-import Enzyme from "enzyme";
+import Enzyme, {shallow} from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
+import {BrowserRouter} from "react-router-dom";
+import Signin from "./Signin";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -81,10 +83,10 @@ describe('Sign Up Form - Step 3', () => {
 
     test('Test Submit Button', async () => {
         render(<SignupStep3 {...testProps}/>);
-        fireEvent.click(screen.getByText('Submit'))
+        const alertMock = jest.spyOn(window,'alert').mockImplementation();
+        const button = screen.getByRole("button");
+        userEvent.click(button);
+        expect(alertMock).toHaveBeenCalledTimes(1);
 
-        await waitFor(() => screen.getByRole('button'))
-
-        expect(screen.getByRole('button')).not.toBeDisabled()
     });
 });
