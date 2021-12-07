@@ -1,4 +1,4 @@
-import {fireEvent, render, screen, waitFor, waitForElement} from "@testing-library/react";
+import {fireEvent, getByText, render, screen, waitFor, waitForElement} from "@testing-library/react";
 import SignupStep3 from './Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
@@ -78,5 +78,15 @@ describe('Sign Up Form - Step 3', () => {
 
         expect(screen.queryByText('Interested in becoming advanced user?')).not.toBeInTheDocument()
         expect(screen.getByText('Yes!')).toBeVisible();
+    });
+
+    test('Test Submit Button', () => {
+        // I think there's an error in either needing to explicitly do something with "onClick" of the button
+        // or we need to send in some other props for props.handleSubmit to work?
+        render(<SignupStep3 {...testProps}/>);
+        const alertMock = jest.spyOn(window,'alert').mockImplementation();
+        const button = screen.getByText("Submit");
+        userEvent.click(button);
+        expect(alertMock).toHaveBeenCalledTimes(1);
     });
 });
