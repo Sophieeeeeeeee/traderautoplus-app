@@ -3,15 +3,14 @@ import SignupStep3 from './Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
-import {BrowserRouter} from "react-router-dom";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 // set up test prop
 const testProps = {
-    currentStep: 3
+    currentStep: 3,
 }
 
 let container = null;
@@ -80,13 +79,12 @@ describe('Sign Up Form - Step 3', () => {
         expect(screen.getByText('Yes!')).toBeVisible();
     });
 
-    test('Test Submit Button', () => {
-        // I think there's an error in either needing to explicitly do something with "onClick" of the button
-        // or we need to send in some other props for props.handleSubmit to work?
+    test('Test Submit Button', async () => {
         render(<SignupStep3 {...testProps}/>);
-        const alertMock = jest.spyOn(window,'alert').mockImplementation();
-        const button = screen.getByText("Submit");
-        userEvent.click(button);
-        expect(alertMock).toHaveBeenCalledTimes(1);
+        fireEvent.click(screen.getByText('Submit'))
+
+        await waitFor(() => screen.getByRole('button'))
+
+        expect(screen.getByRole('button')).not.toBeDisabled()
     });
 });
