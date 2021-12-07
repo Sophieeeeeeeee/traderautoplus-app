@@ -148,7 +148,7 @@ class UserInputs extends Component{
         try{
         if (this.props.location.state.advanced == 'false') {
                 //const user = this.props.location.state
-                const user = this.state
+                const user = this.props.location.state
 
                 post = {
                     "name": user.name,
