@@ -1,28 +1,14 @@
 import React from 'react';
 import {
+    act, prettyDOM,
     render,
     screen,
-    fireEvent,
-    queryByTestId,
-    getByText, waitFor, getByDisplayValue, act,
 } from '@testing-library/react';
 import UserInputs from './UserInputs';
-import {BrowserRouter} from "react-router-dom";
-import Enzyme, {shallow} from "enzyme";
+import { Router, BrowserRouter } from "react-router-dom";
+import {createMemoryHistory} from "history";
+import Enzyme, {mount, shallow} from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
-
-const testProps = {
-    which: false,
-    currentStep: -1
-}
-
-let container = null;
-beforeEach(() => {
-    // setup a DOM element as a render target
-    container = document.createElement("div");
-    document.body.appendChild(container);
-})
-
 
 describe('UsersInput', () => {
     test('Test UsersInput renders sign up', async () => {
@@ -33,11 +19,10 @@ describe('UsersInput', () => {
     });
 
     test('Test UsersInput renders browse', async () => {
-        // render(<BrowserRouter> <UserInputs {...testProps}/> </BrowserRouter>);
-
-        render(<BrowserRouter> <UserInputs which={false}/> </BrowserRouter>);
-
-        expect(screen.getByText('Please sign in / sign up first!')).toBeInTheDocument();
+        Enzyme.configure({ adapter: new Adapter() })
+        const userInputs = shallow(<BrowserRouter> <UserInputs which={false}/> </BrowserRouter>);
+        userInputs.setState({ currentStep: -1});
+        expect(userInputs.state('currentStep')).toEqual(-1);
     })
 });
 
