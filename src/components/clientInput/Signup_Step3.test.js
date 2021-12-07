@@ -82,11 +82,26 @@ describe('Sign Up Form - Step 3', () => {
     });
 
     test('Test Submit Button', async () => {
-        render(<SignupStep3 {...testProps}/>);
-        const alertMock = jest.spyOn(window,'alert').mockImplementation();
+        const handleSubmit = jest.fn();
+        const handleChange = jest.fn();
+        const handleInputChange = jest.fn();
+        const onClick = jest.fn();
+
+        const thisProps = {
+            currentStep: 3,
+            advanced: true,
+            monthlyIncome: 8000,
+            monthlyDebt: 200,
+            handleSubmit,
+            handleChange,
+            handleInputChange,
+            onClick,
+        }
+
+
+        render(<SignupStep3 {...thisProps}/>);
         const button = screen.getByRole("button");
         userEvent.click(button);
-        expect(alertMock).toHaveBeenCalledTimes(1);
-
+        expect(thisProps.handleSubmit).toHaveBeenCalled();
     });
 });
