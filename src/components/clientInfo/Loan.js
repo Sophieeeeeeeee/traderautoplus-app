@@ -29,7 +29,9 @@ class Loans extends Component {
       };
     }
     this.parseLoans = this.parseLoans.bind(this);
-    this.parseLoans();
+
+    if(this.state.fromBrowse){
+    this.parseLoans();}
   }
 
   /**
