@@ -1,11 +1,28 @@
 import React from "react";
 import Select from "react-select";
 
+/**
+ * Renders  Step3 of form on Sign up page
+ * @props  {int} currentStep click
+ * @props  {function} handleCurrentStep
+ * @props  {String} name
+ * @props  {String} password
+ * @props  {String} maxMonthlyPayment
+ * @props  {String} maxDownPayment
+ * @props  {String} zipCode
+ * @props  {String} creditScore
+ * @props  {function} handleChange
+ * @props  {function} handleSubmit
+ * @props  {function} sendPost
+ * @props  {function} stepOneNext
+ * @props  {function} handleInputChange  when dropdown box content selected, update UserInputs state variables
+ */
 function SignupStep3(props) {
   if (props.currentStep !== 3) {
     return null;
   }
 
+  // labels for dropdown boxes
   const employedOptions = [
     { value: "employed", label: "Yes, I am employed" },
     { value: "not employed", label: "No, I am not employed" },
@@ -42,7 +59,7 @@ function SignupStep3(props) {
                 name="advanced"
                 className="check"
                 value={props.advanced}
-                onChange={props.handleCarFilter}
+                onChange={props.handleInputChange}
                 options={advancedOptions}
                 placeholder="Interested in becoming advanced user?"
                 isMulti={false}
@@ -80,7 +97,7 @@ function SignupStep3(props) {
                 name="employed"
                 className="check"
                 value={props.advanced}
-                onChange={props.handleCarFilter}
+                onChange={props.handleInputChange}
                 options={employedOptions}
                 placeholder="Yes/No"
                 isMulti={false}
@@ -93,7 +110,7 @@ function SignupStep3(props) {
                 name="homeowner"
                 className="check"
                 value={props.advanced}
-                onChange={props.handleCarFilter}
+                onChange={props.handleInputChange}
                 options={homeownerOptions}
                 placeholder="Yes/No"
                 isMulti={false}

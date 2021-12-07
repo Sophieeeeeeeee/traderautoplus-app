@@ -4,13 +4,20 @@ import CardItem from "./CarItem";
 import CarFilter from "./CarFilter";
 
 /**
- * Renders browse page, calls and provide props to CarFilter, CarItem, Cars
+ * Renders browse page, calls and provide props to CarFilter, CarItem,
+ * contains filter button that when clicked sends request to backend and display cars based on the response
  * @props  {String} carColor
  * @props  {String} carType
  * @props  {String} carBrand
  * @props  {String} carAge
+ * @props  {String} carAge
+ * @props {String} currentStep
  * @props  {function} handleCarFilter
  * @props  {function} sendPost
+ *
+ * @state {String} eachCar stores response for each car ID fetch request
+ * @state {carInfo} carInfo stores extracted form of car info from backend response
+ * @state {loans} loans stores loan for each car ID fetch request
  */
 class Cars extends Component {
   constructor(props) {
@@ -23,14 +30,16 @@ class Cars extends Component {
     this.sendIDRequest = this.sendIDRequest.bind(this);
   }
 
+  /**
+   * Sends request of each car ID from prop.postResponse to ID endpoint,
+   * which sends back car details of each car associated with the ID
+   * Save each response to state variable carInfo
+   */
   async sendIDRequest() {
-    console.log("test");
     console.log(this.props.postResponse);
-
     let obj = this.props.postResponse;
 
     for (var key in obj) {
-      //console.log(key)
       let post = { key };
       console.log(JSON.stringify(post));
       const requestOptions = {
@@ -43,18 +52,14 @@ class Cars extends Component {
         "https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/database",
         requestOptions
       )
-        //fetch("http://localhost:8080/database", requestOptions)
         .then((response) => response.json())
         .then((response) => this.setState({ eachCar: response }))
         .then((response) => console.log(this.state.eachCar));
 
-      console.log(typeof this.state.eachCar);
 
       let temp2 = obj[key];
       this.setState({ loans: temp2 });
 
-      //let temp = this.state.eachCar['Model Year']
-      //console.log(temp)
       let temp = [
         this.state.eachCar["Model Year"],
         this.state.eachCar["Car"],
@@ -68,18 +73,6 @@ class Cars extends Component {
       ];
 
       console.log(temp);
-
-      // Object.keys(this.state.eachCar).forEach(function(key) {
-      //     console.log('Key : ' + key + ', Value : ' + this.state.eachCar[key])
-      // })
-
-      console.log("hye");
-
-      // for (var i = 0; i <  this.state.carInfo.length; i++) {  //Iterate through arrays in array
-      //     if (this.state.carInfo[i].indexOf(temp[1]) != -1) {
-      //         this.state.carInfo.push(temp)
-      //     }
-      // }
 
       this.state.carInfo.push(temp);
 
@@ -107,7 +100,6 @@ class Cars extends Component {
             sendPost={this.props.sendPost}
           />
 
-          {/*<button className='filter-btn' onClick={this.props.sendPost}>Filter</button>*/}
           <button className="filter-btn" onClick={this.sendIDRequest}>
             Filter
           </button>

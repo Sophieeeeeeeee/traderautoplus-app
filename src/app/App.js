@@ -13,11 +13,6 @@ import Signin from "../components/clientInput/Signin";
 import Loans from "../components/clientInfo/Loan";
 import Footer from "../components/webDesign/footer/Footer";
 
-
-// For sign in session using React context
-const SignedIn = React.createContext(false);
-const { Provider, Consumer } = SignedIn;
-
 class App extends Component {
   constructor() {
     super();
@@ -55,6 +50,11 @@ class App extends Component {
   }
 }
 
+
+/**
+ * Calls UserInputs  to render SignUp page
+ * pass down a boolean value to UserInputs class to determine whether to render Signup or Cars class component
+ */
 class Signupp extends Component {
   constructor() {
     super();
@@ -65,7 +65,6 @@ class Signupp extends Component {
   render() {
     return (
       <div>
-        {/*<UserInputs />*/}
         <UserInputs which={this.state.UserInputsdisplay} />
         {/*<TestButtons />*/}
       </div>
@@ -73,6 +72,10 @@ class Signupp extends Component {
   }
 }
 
+/**
+ * Calls UserInputs  to render browse page
+ * pass down a boolean value to UserInputs class to determine whether to render Signup or Cars class component
+ */
 class DisplayCars extends Component {
   constructor() {
     super();
@@ -91,6 +94,9 @@ class DisplayCars extends Component {
   }
 }
 
+/**
+ * Calls Signin to render sign-in page
+ */
 class SignInn extends Component{
     constructor() {
         super();
@@ -102,6 +108,9 @@ class SignInn extends Component{
     }
 }
 
+/**
+ * Calls Loans to render car-details page
+ */
 class CarDetails extends Component{
     constructor() {
         super();

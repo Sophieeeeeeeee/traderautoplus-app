@@ -6,10 +6,13 @@ import Cars from "../clientInfo/Cars";
 import { withRouter } from 'react-router-dom';
 
 /**
- * Class that holds all information about a user, user's basic info and car preference
+ * Class that holds all information about a user and functions that change the user input variables
  * Renders Signup or Browse page based on props
  * @props  {boolean} which if true, renders Signup, if false, renders browse
+ *
  * @state {String} name
+ * @state {String} password
+ *
  * @state  {String} creditScore
  * @state  {String} zipCode
  * @state  {String} maxDownPayment
@@ -17,9 +20,17 @@ import { withRouter } from 'react-router-dom';
  *
  * @state  {String} carColor
  * @state  {String} carType
- * @state  {String array} carAge
- * @state  {String array} carBrand
+ * @state  {String} carAge
+ * @state  {String} carBrand
  *
+ * @state  {String} postResponse
+ * @state  {int} currentStep
+ *
+ * @state  {String} advanced
+ * @state  {String} monthlyIncome
+ * @state  {String} monthlyDebt
+ * @state  {String} employed
+ * @state  {String} homeowner
  */
 class UserInputs extends Component{
     constructor(props) {
@@ -52,8 +63,8 @@ class UserInputs extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sendPost = this.sendPost.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleCarFilter = this.handleCarFilter.bind(this);
-        this.handleCarFilterr = this.handleCarFilterr.bind(this);
 
         this.handleCurrentStep2 = this.handleCurrentStep2.bind(this);
         this.handleCurrentStep3 = this.handleCurrentStep3.bind(this);
@@ -119,20 +130,16 @@ class UserInputs extends Component{
 
     /**
      * handleCurrentStep set currentStep to 2 to render step 2 of signup page,
-     * pass down this function to SignupStep1 as the onClick function of the 'next' button
+     * pass down this function to SignupStep1 as the onClick function of the 'next' button on step1
      */
     handleCurrentStep2(){
         this.setState({currentStep: 2})
-        // let errors = {};
-        // if (this.state.username.trim()) {
-        //     errors.username = 'Username required';
-        // }
-        // if (!this.state.password) {
-        //     errors.username = 'Password required';
-        // }
-        // return errors
     }
 
+    /**
+     * handleCurrentStep set currentStep to 3 to render step 3 of signup page,
+     * pass down this function to SignupStep1 as the onClick function of the 'next' button on step2
+     */
     handleCurrentStep3(){
         this.setState({currentStep: 3})
     }
@@ -142,12 +149,9 @@ class UserInputs extends Component{
      * pass down this function to update state variables of UserInputs class
      */
     sendPost (value) {
-        //const {name, creditScore, zipCode, carPreferences, maxDownPayment, maxMonthlyPayment} = this.state
-        //const user = this.state //check valid inputs
         let post = {}
         try{
         if (this.props.location.state.advanced == 'false') {
-                //const user = this.props.location.state
                 const user = this.props.location.state
 
                 post = {
@@ -157,7 +161,6 @@ class UserInputs extends Component{
                     "zip-code": user.zipCode,
                     "downpayment": user.maxDownPayment,
                     "monthlybudget": user.maxMonthlyPayment,
-                    //"car-preference": this.state.carType
                     "car-preference": value
                 }
             } else {
@@ -169,7 +172,6 @@ class UserInputs extends Component{
                     "zip-code": user.zipCode,
                     "downpayment": user.maxDownPayment,
                     "monthlybudget": user.maxMonthlyPayment,
-                    //"car-preference": this.state.carType,
                     "car-preference": value,
 
                     "monthlydebt": user.monthlyDebt,
@@ -187,7 +189,6 @@ class UserInputs extends Component{
             };
 
             fetch("https://cors-everywhere.herokuapp.com/http://ec2-18-118-19-97.us-east-2.compute.amazonaws.com:8080/traderauto-plus", requestOptions)
-                //fetch("http://localhost:8080/traderauto-plus", requestOptions)
                 .then(response => response.json())
                 .then(response => this.setState({postResponse: response}))
                 .then(response => console.log(this.state.postResponse))
@@ -199,21 +200,28 @@ class UserInputs extends Component{
     }
 
     /**
-     * handleCarFilter function for detecting changes in dropdown boxed for car preference on browse page in CarFilter class
+     * handleInputChange function for detecting changes in dropdown boxes
      * pass down this function to update state variables of UserInputs class
      */
-    handleCarFilter(value, action){
+    handleInputChange(value, action){
         this.setState({ [action.name]:value.value})
         console.log(this.state)
         console.log(this.props.location.state)
     }
 
-    handleCarFilterr(value, action){
+    /**
+     * handleCarFilter function for detecting changes in dropdown box for car preference on browse page in CarFilter class
+     * in this one sendPost called
+     */
+    handleCarFilter(value, action){
         this.setState({ [action.name]:value.value})
         console.log(this.state)
         this.sendPost(value.value)
     }
 
+    /**
+     * Check if input fields of sign up from on step 1 properly filled, if not alert pops up
+     */
     stepOneNext(){
         if (this.state.name === '' || this.state.password === ''){
             alert('Please fill out inputs properly!')
@@ -223,6 +231,9 @@ class UserInputs extends Component{
         }
     }
 
+    /**
+     * Check if input fields of sign up from on step 2 properly filled, if not alert pops up
+     */
     stepTwoNext(){
         if (this.state.maxDownPayment === '' || this.state.maxMonthlyPayment === '' || this.state.zipCode === '' || this.state.creditScore === ''){
             alert('Please fill out inputs properly! There exits missing input(s)!')
@@ -252,11 +263,10 @@ class UserInputs extends Component{
                     monthlyDebt = {this.state.monthlyDebt}
                     employed = {this.state.employed}
                     homeowner = {this.state.homeowner}
-                    handleCarFilter = {this.handleCarFilter}
+                    handleInputChange = {this.handleInputChange}
 
                     stepOneNext = {this.stepOneNext}
                     stepTwoNext = {this.stepTwoNext}
-
                 />
             )
 
@@ -279,10 +289,12 @@ class UserInputs extends Component{
                     carType = {this.state.carType}
                     carBrand = {this.state.carBrand}
                     carAge = {this.state.carAge}
-                    postResponse = {this.state.postResponse}
-                    handleCarFilter = {this.handleCarFilterr}
+                    handleCarFilter = {this.handleCarFilter}
                     sendPost = {this.sendPost}
                     currentStep = {this.state.currentStep}
+
+                    postResponse = {this.state.postResponse}
+
                     />
                     </div>
                 )
@@ -293,4 +305,3 @@ class UserInputs extends Component{
 
 }
 export default withRouter(UserInputs)
-// export default UserInputs
