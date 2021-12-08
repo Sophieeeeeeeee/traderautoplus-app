@@ -4,7 +4,7 @@ import {
     render,
     screen,
 } from '@testing-library/react';
-import UserInputs from './UserInputs';
+import UserInputs from '../UserInputs';
 import { Router, BrowserRouter } from "react-router-dom";
 import {createMemoryHistory} from "history";
 import Enzyme, {mount, shallow} from "enzyme";

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import {BrowserRouter} from "react-router-dom";
-import Signin from "../clientInput/Signin.js";
+import Signin from "../Signin.js";
 import React from "react";
 import userEvent from "@testing-library/user-event";
 import Adapter from 'enzyme-adapter-react-16';

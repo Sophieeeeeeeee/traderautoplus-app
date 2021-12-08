@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { render, screen, fireEvent } from '@testing-library/react';
-import CarItem from './CarItem';
+import CarItem from '../CarItem';
 import {BrowserRouter} from "react-router-dom";
 
 describe('CarItem', () => {

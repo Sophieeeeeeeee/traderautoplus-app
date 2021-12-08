@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {render, screen, fireEvent, getByTitle, act, getByRole} from '@testing-library/react';
-import Loan from "./Loan";
+import Loan from "../Loan";
 import {Router} from "react-router-dom";
 import { createMemoryHistory } from "history";
 

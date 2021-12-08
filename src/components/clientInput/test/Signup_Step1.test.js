@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SignupStep1 from './Signup_Step1';
+import SignupStep1 from '../Signup_Step1';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";

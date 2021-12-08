@@ -1,12 +1,12 @@
 import {fireEvent, getByText, render, screen, waitFor, waitForElement} from "@testing-library/react";
-import SignupStep3 from './Signup_Step3';
+import SignupStep3 from '../Signup_Step3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 import {BrowserRouter} from "react-router-dom";
-import Signin from "./Signin";
+import Signin from "../Signin";
 
 Enzyme.configure({ adapter: new Adapter() });
 

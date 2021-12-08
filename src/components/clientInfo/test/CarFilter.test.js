@@ -6,7 +6,7 @@ import {
     queryByTestId,
     getByText, waitFor, getByDisplayValue,
 } from '@testing-library/react';
-import CarFilter from './CarFilter';
+import CarFilter from '../CarFilter';
 
 
 describe('CarFilter', () => {
