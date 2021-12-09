@@ -40,7 +40,7 @@ class Signin extends Component {
       password: user.password,
     };
 
-    console.log(JSON.stringify(post));
+    //console.log(JSON.stringify(post));
 
     const requestOptions = {
       method: "POST",
