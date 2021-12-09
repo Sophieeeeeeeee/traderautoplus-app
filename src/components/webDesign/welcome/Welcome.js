@@ -26,7 +26,7 @@ class WelcomeSection extends Component {
           />
         </section>
 
-        <h1>Find your most suitable car, and loan.</h1>
+        <h1>Find your most suitable car and loan.</h1>
 
         <p>Get Started Here</p>
 
