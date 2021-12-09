@@ -3,6 +3,15 @@ import { withRouter } from "react-router-dom";
 import "./Cars.css";
 import "./Loan.css";
 
+/**
+ * Renders car-details page of each car popping up on browse page
+ * @props.location.state {boolean} fromBrowse if the link is directed from browse page
+ * @props.location.state  {Array} allInfo response of car ID post request, contains car info and associated loan info
+ *
+ * @state {Array} loanList saves all extracted info as element in list
+ * @state {Array} fromBrowse default false
+ * @state {String} allInfo default ''
+ */
 class Loans extends Component {
   constructor(props) {
     super(props);
@@ -19,12 +28,19 @@ class Loans extends Component {
         loanList: [],
       };
     }
-    // console.log(JSON.stringify(this.state.loans))
     this.parseLoans = this.parseLoans.bind(this);
-    this.parseLoans();
+
+    if(this.state.fromBrowse){
+    this.parseLoans();}
   }
 
+  /**
+   * Extract car info and related loan info saved in this.props.location.state.allInfo
+   * Save them in a array as state variable for rendering
+   */
   parseLoans() {
+    console.log(this.state.allInfo)
+
     let obj = this.state.allInfo[8]; //loans
     let tempList = [];
     for (var i = 0; i < obj.length; i++) {

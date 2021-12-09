@@ -68,8 +68,8 @@ ul {
   display: flexbox;
   justify-content: center;
   flex-direction: column;
-  margin-top: 7%;
-  padding-left: 7%;
+  margin-top: 0rem;
+  padding-left: 3%;
 }
 
 .box {

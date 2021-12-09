@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * Renders  Step1 of form on Sign up page
+ * @props  {int} currentStep click on each image to get to this path
+ * @props  {function} handleCurrentStep
+ * @props  {String} name
+ * @props  {String} password
+ * @props  {String} maxMonthlyPayment
+ * @props  {String} maxDownPayment
+ * @props  {String} zipCode
+ * @props  {String} creditScore
+ * @props  {function} handleChange
+ * @props  {function} handleSubmit
+ * @props  {function} sendPost
+ * @props  {function} stepOneNext
+ */
 function SignupStep1(props) {
   if (props.currentStep !== 1) {
     return null;
   }
-
-  let errors = {};
-
-  const validateInput = (e) => {
-    e.preventDefault();
-
-    if (props.username.trim()) {
-      errors.username = "Username required";
-    }
-    if (!props.password) {
-      errors.username = "Password required";
-    }
-    console.log(errors);
-  };
 
   return (
     <div>
@@ -25,12 +26,11 @@ function SignupStep1(props) {
         <div className="form-content">
           <form className="form">
             {" "}
-            {/*onSubmit={validateInput}*/}
             <h1>Get started with us today!</h1>
             <h2> Create an account! </h2>
             <h1 className="step">Step 1</h1>
             <div className="form-inputs">
-              <label className="form-label"> Username:</label>
+              <label className="form-label">Username:</label>
               <input
                 className="form-input"
                 name="name"
@@ -40,9 +40,9 @@ function SignupStep1(props) {
                 onChange={props.handleChange}
               />
             </div>
-            {errors.password && <p>{errors.password}</p>}
+
             <div className="form-inputs">
-              <label className="form-label"> Password:</label>
+              <label className="form-label">Password:</label>
               <input
                 className="form-input"
                 name="password"
@@ -57,7 +57,6 @@ function SignupStep1(props) {
               type="submit"
               onClick={props.stepOneNext}
             >
-              {/*onClick={props.handleCurrentStep}*/}
               <p className="btn-text"> Next </p>
             </button>
           </form>
