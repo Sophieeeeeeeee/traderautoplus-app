@@ -100,7 +100,7 @@ class Loans extends Component {
                 </div>
                 <div class="box  ">
                   <h2 class="boxname ">Mileage:</h2>{" "}
-                  <p class="information">{x.allInfo[5]}</p>
+                  <p class="information">{x.allInfo[6]}</p>
                 </div>
                 <div class="box availability">
                   <h2 class="boxname available">Available at:</h2>{" "}
