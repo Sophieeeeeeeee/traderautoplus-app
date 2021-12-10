@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "../button/Button";
+import { Button } from "../Button/Button";
 import "../../../app/App.css";
 import "./Welcome.css";
 import ReactPlayer from "react-player/youtube";

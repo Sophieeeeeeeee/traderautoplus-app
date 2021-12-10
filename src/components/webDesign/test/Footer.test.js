@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, getByRole, render, screen} from '@testing-library/react';
-import Footer from '../footer/Footer';
+import Footer from '../Footer/Footer';
 import {BrowserRouter} from "react-router-dom";
 
 describe('Footer', () => {

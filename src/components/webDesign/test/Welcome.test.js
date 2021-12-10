@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, getByRole, render, screen} from '@testing-library/react';
-import Welcome from '../welcome/Welcome';
+import Welcome from '../Welcome/Welcome';
 import {BrowserRouter} from "react-router-dom";
 
 describe('Welcome', () => {

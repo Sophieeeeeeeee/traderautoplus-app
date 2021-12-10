@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, getByRole, render, screen} from '@testing-library/react';
-import Navbar from '../navBar/Navbar';
+import Navbar from '../NavBar/Navbar';
 import {BrowserRouter} from "react-router-dom";
 
 describe('Navbar', () => {

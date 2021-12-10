@@ -17,7 +17,7 @@ import Select from "react-select";
  * @props  {function} stepOneNext
  * @props  {function} handleInputChange  when dropdown box content selected, update UserInputs state variables
  */
-function SignupStep3(props) {
+function SignUpStep3(props) {
   if (props.currentStep !== 3) {
     return null;
   }
@@ -131,4 +131,4 @@ function SignupStep3(props) {
   );
 }
 
-export default SignupStep3;
+export default SignUpStep3;

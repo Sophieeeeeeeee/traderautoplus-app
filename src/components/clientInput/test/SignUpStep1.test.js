@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SignupStep1 from '../Signup_Step1';
+import SignUpStep1 from '../SignUpStep1';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
@@ -19,7 +19,7 @@ beforeEach(() => {
 describe('Sign Up Form - Step 1', () => {
     test('Test Render', () =>{
         act(() => {
-            render(<SignupStep1 {...testProps}/>, container);
+            render(<SignUpStep1 {...testProps}/>, container);
         });
         expect(screen.getByText("Step 1")).toBeInTheDocument();
         expect(screen.getByText("Username:")).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe('Sign Up Form - Step 1', () => {
     })
     test('Test Fill Out Form', async () => {
         await act(() => {
-            render(<SignupStep1 {...testProps}/>, container);
+            render(<SignUpStep1 {...testProps}/>, container);
         });
 
         const inputUsername = screen.getByPlaceholderText("Enter your name");

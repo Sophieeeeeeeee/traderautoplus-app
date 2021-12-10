@@ -15,7 +15,7 @@ import React from "react";
  * @props  {function} sendPost
  * @props  {function} stepOneNext
  */
-function SignupStep2(props) {
+function SignUpStep2(props) {
   if (props.currentStep !== 2) {
     return null;
   }
@@ -92,4 +92,4 @@ function SignupStep2(props) {
   );
 }
 
-export default SignupStep2;
+export default SignUpStep2;

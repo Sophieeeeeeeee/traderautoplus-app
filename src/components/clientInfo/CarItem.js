@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
  * @props  {String} src file path to car image
  * @props  {String} text text under img rendered
  */
-function CarItem(props) {
+function carItem(props) {
   return (
     <>
       <li className="cards__item_car">
@@ -39,4 +39,4 @@ function CarItem(props) {
   );
 }
 
-export default withRouter(CarItem);
+export default withRouter(carItem);

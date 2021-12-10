@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import '../../app/App.css';
 import './UserInput.css';
-import Signup from './Signup';
+import SignUp from './SignUp';
 import Cars from "../clientInfo/Cars";
 import { withRouter } from 'react-router-dom';
 
 /**
  * Class that holds all information about a user and functions that change the user input variables
- * Renders Signup or Browse page based on props
- * @props  {boolean} which if true, renders Signup, if false, renders browse
+ * Renders SignUp or Browse page based on props
+ * @props  {boolean} which if true, renders SignUp, if false, renders browse
  *
  * @state {String} name
  * @state {String} password
@@ -76,7 +76,7 @@ class UserInputs extends Component{
 
 
     /**
-     * handleSubmit for submit button on Signup page in Signup class,
+     * handleSubmit for submit button on SignUp page in SignUp class,
      * pass down this function to update state variables of UserInputs class
      * @param  {event} onClick event of the submit button
      */
@@ -119,7 +119,7 @@ class UserInputs extends Component{
     }
 
     /**
-     * handleChange for input box on Signup page in Signup class,
+     * handleChange for input box on SignUp page in SignUp class,
      * pass down this function to update state variables of UserInputs class
      * @param  {event} onChange event of content of box
      */
@@ -130,7 +130,7 @@ class UserInputs extends Component{
 
     /**
      * handleCurrentStep set currentStep to 2 to render step 2 of signup page,
-     * pass down this function to SignupStep1 as the onClick function of the 'next' button on step1
+     * pass down this function to SignUpStep1 as the onClick function of the 'next' button on step1
      */
     handleCurrentStep2(){
         this.setState({currentStep: 2})
@@ -138,7 +138,7 @@ class UserInputs extends Component{
 
     /**
      * handleCurrentStep set currentStep to 3 to render step 3 of signup page,
-     * pass down this function to SignupStep1 as the onClick function of the 'next' button on step2
+     * pass down this function to SignUpStep1 as the onClick function of the 'next' button on step2
      */
     handleCurrentStep3(){
         this.setState({currentStep: 3})
@@ -243,7 +243,7 @@ class UserInputs extends Component{
 
     render(){
         if(this.props.which){ // if true, return signup
-            return(<Signup
+            return(<SignUp
                     name = {this.state.name}
                     password = {this.state.password}
                     maxMonthlyPayment = {this.state.maxMonthlyPayment}
