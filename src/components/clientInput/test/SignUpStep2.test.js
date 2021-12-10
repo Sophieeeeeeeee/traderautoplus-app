@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SignupStep2 from '../Signup_Step2';
+import SignUpStep2 from '../SignUpStep2';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
@@ -19,7 +19,7 @@ beforeEach(() => {
 describe('Sign Up Form - Step 2', () => {
     test('Test Render', () =>{
         act(() => {
-            render(<SignupStep2 {...testProps}/>, container);
+            render(<SignUpStep2 {...testProps}/>, container);
         });
         expect(screen.getByText("Step 2")).toBeInTheDocument();
         expect(screen.getByText("Downpayment:")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('Sign Up Form - Step 2', () => {
     })
     test('Test Fill Out Form', async () => {
         await act(() => {
-            render(<SignupStep2 {...testProps}/>, container);
+            render(<SignUpStep2 {...testProps}/>, container);
         });
 
         const inputDownpayment = screen.getByPlaceholderText("Enter your down payment");

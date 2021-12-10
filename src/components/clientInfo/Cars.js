@@ -36,12 +36,10 @@ class Cars extends Component {
    * Save each response to state variable carInfo
    */
   async sendIDRequest() {
-    console.log(this.props.postResponse);
     let obj = this.props.postResponse;
 
     for (var key in obj) {
       let post = { key };
-      console.log(JSON.stringify(post));
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -54,7 +52,6 @@ class Cars extends Component {
       )
         .then((response) => response.json())
         .then((response) => this.setState({ eachCar: response }))
-        .then((response) => console.log(this.state.eachCar));
 
 
       let temp2 = obj[key];
@@ -72,11 +69,8 @@ class Cars extends Component {
         this.state.loans,
       ];
 
-      console.log(temp);
 
       this.state.carInfo.push(temp);
-
-      console.log(this.state.carInfo);
 
     }
   }
@@ -106,9 +100,6 @@ class Cars extends Component {
 
           <h1>Check out these cars recommended to you!</h1>
           <h1>Apply filter to find the one for you!</h1>
-          {/*{this.props.postResponse && Array.from(this.props.postResponse[4]).map(x => <p>{JSON.stringify(x)}</p>)}*/}
-
-          {/*cars rendered below should be based on car filter (and sign up info from before)*/}
 
           <div className="cards__container_car">
             <div className="cards__wrapper_car">

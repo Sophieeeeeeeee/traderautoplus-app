@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
  * @props  {function} sendPost
  * @props  {function} stepOneNext
  */
-function SignupStep1(props) {
+function SignUpStep1(props) {
   if (props.currentStep !== 1) {
     return null;
   }
@@ -66,4 +66,4 @@ function SignupStep1(props) {
   );
 }
 
-export default SignupStep1;
+export default SignUpStep1;

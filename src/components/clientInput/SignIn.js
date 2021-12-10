@@ -8,7 +8,7 @@ import "./UserInput.css";
  * @state {String} password
  * @state {String} response stores response of fetch request to backend
  */
-class Signin extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +40,7 @@ class Signin extends Component {
       password: user.password,
     };
 
-    console.log(JSON.stringify(post));
+    //console.log(JSON.stringify(post));
 
     const requestOptions = {
       method: "POST",
@@ -120,4 +120,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default SignIn;

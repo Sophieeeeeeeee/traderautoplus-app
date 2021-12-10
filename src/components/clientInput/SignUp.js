@@ -1,12 +1,12 @@
 import React from "react";
 import '../../app/App.css';
 import './UserInput.css';
-import SignupStep1 from "./Signup_Step1";
-import SignupStep2 from "./Signup_Step2";
-import SignupStep3 from "./Signup_Step3";
+import SignUpStep1 from "./SignUpStep1";
+import SignUpStep2 from "./SignUpStep2";
+import SignUpStep3 from "./SignUpStep3";
 
 /**
- * Renders Signup page, props all come from UserInputs class
+ * Renders SignUp page, props all come from UserInputs class
  * Renders which step depending on value of prop.currentStep
  * @props  {String} name
  * @props  {String} maxDownPayment
@@ -29,7 +29,7 @@ import SignupStep3 from "./Signup_Step3";
  * @props  {function} stepOneNext triggered when next button on stepOne clicked
  * @props  {function} stepTwoNext triggered when next button on stepTwo clicked
  */
-function Signup(props){
+function SignUp(props){
 
     return(
     <div>
@@ -37,7 +37,7 @@ function Signup(props){
             <div className='form-content'>
                 <form onSubmit={props.handleSubmit} className='form'>
 
-                    <SignupStep1
+                    <SignUpStep1
                         currentStep={props.currentStep}
                         handleCurrentStep = {props.handleCurrentStep2}
 
@@ -52,7 +52,7 @@ function Signup(props){
                         sendPost = {props.sendPost}
                         stepOneNext = {props.stepOneNext}/>
 
-                    <SignupStep2
+                    <SignUpStep2
                         currentStep={props.currentStep}
                         handleCurrentStep = {props.handleCurrentStep3}
 
@@ -67,7 +67,7 @@ function Signup(props){
                         sendPost = {props.sendPost}
                         stepTwoNext = {props.stepTwoNext}/>
 
-                    <SignupStep3
+                    <SignUpStep3
                         currentStep={props.currentStep}
 
                         name = {props.name}
@@ -94,4 +94,4 @@ function Signup(props){
 )
 }
 
-export default Signup
+export default SignUp

@@ -6,12 +6,12 @@ import "./App.css";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Navbar from "../components/webDesign/navBar/Navbar";
-import Welcome from "../components/webDesign/welcome/Welcome";
+import Navbar from "../components/webDesign/NavBar/Navbar";
+import Welcome from "../components/webDesign/Welcome/Welcome";
 import UserInputs from "../components/clientInput/UserInputs";
-import Signin from "../components/clientInput/Signin";
+import SignIn from "../components/clientInput/SignIn";
 import Loans from "../components/clientInfo/Loan";
-import Footer from "../components/webDesign/footer/Footer";
+import Footer from "../components/webDesign/Footer/Footer";
 
 class App extends Component {
   constructor() {
@@ -53,7 +53,7 @@ class App extends Component {
 
 /**
  * Calls UserInputs  to render SignUp page
- * pass down a boolean value to UserInputs class to determine whether to render Signup or Cars class component
+ * pass down a boolean value to UserInputs class to determine whether to render SignUp or Cars class component
  */
 class Signupp extends Component {
   constructor() {
@@ -74,7 +74,7 @@ class Signupp extends Component {
 
 /**
  * Calls UserInputs  to render browse page
- * pass down a boolean value to UserInputs class to determine whether to render Signup or Cars class component
+ * pass down a boolean value to UserInputs class to determine whether to render SignUp or Cars class component
  */
 class DisplayCars extends Component {
   constructor() {
@@ -95,7 +95,7 @@ class DisplayCars extends Component {
 }
 
 /**
- * Calls Signin to render sign-in page
+ * Calls SignIn to render sign-in page
  */
 class SignInn extends Component{
     constructor() {
@@ -103,7 +103,7 @@ class SignInn extends Component{
     }
     render(){
         return(
-            <Signin />
+            <SignIn />
         )
     }
 }

@@ -39,14 +39,12 @@ class Loans extends Component {
    * Save them in a array as state variable for rendering
    */
   parseLoans() {
-    console.log(this.state.allInfo)
 
     let obj = this.state.allInfo[8]; //loans
     let tempList = [];
     for (var i = 0; i < obj.length; i++) {
       tempList.push(obj[i]);
     }
-    console.log(tempList); // list of loan objects
 
     let tempList2 = [];
 
@@ -57,7 +55,6 @@ class Loans extends Component {
         tempList2.push(tempList[i][idx]);
       }
     }
-    console.log(tempList2); // list of (array of each loan)
 
     let tempLoan = [];
     for (var i = 0; i < tempList2.length; i++) {
@@ -68,11 +65,11 @@ class Loans extends Component {
         tempLoan.push(tempList2[i][2][key]);
       }
       // now tempLoan has saved everything
-      console.log(tempLoan);
+      //console.log(tempLoan);
       this.state.loanList.push(tempLoan);
       tempLoan = [];
     }
-    console.log(this.state.loanList);
+    //console.log(this.state.loanList);
   }
 
   render() {
@@ -100,7 +97,7 @@ class Loans extends Component {
                 </div>
                 <div class="box  ">
                   <h2 class="boxname ">Mileage:</h2>{" "}
-                  <p class="information">{x.allInfo[5]}</p>
+                  <p class="information">{x.allInfo[6]}</p>
                 </div>
                 <div class="box availability">
                   <h2 class="boxname available">Available at:</h2>{" "}
@@ -112,16 +109,11 @@ class Loans extends Component {
               className="cards__item__img"
               alt="Car Image"
               src={x.allInfo[7]}
-              //style={{ alignSelf: 'center' }}
             />
           </div>
 
           <div>
             <h1 class="main">Possible loans for you:</h1>
-
-            {/*<ul>*/}
-            {/*    <p>{JSON.stringify(x.allInfo[8])}</p>*/}
-            {/*</ul>*/}
 
             {this.state.loanList.map((loan) => (
               <div className="element">

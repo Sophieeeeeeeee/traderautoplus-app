@@ -1,12 +1,12 @@
 import {fireEvent, getByText, render, screen, waitFor, waitForElement} from "@testing-library/react";
-import SignupStep3 from '../Signup_Step3';
+import SignUpStep3 from '../SignUpStep3';
 import React from "react";
 import { act } from "react-dom/test-utils";
 import userEvent from "@testing-library/user-event";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from 'enzyme-adapter-react-16';
 import {BrowserRouter} from "react-router-dom";
-import Signin from "../Signin";
+import SignIn from "../SignIn";
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -25,7 +25,7 @@ beforeEach(() => {
 describe('Sign Up Form - Step 3', () => {
     test('Test Render', () =>{
         act(() => {
-            render(<SignupStep3 {...testProps}/>, container);
+            render(<SignUpStep3 {...testProps}/>, container);
         });
         expect(screen.getByText("Would you like to be an advanced user?")).toBeInTheDocument();
         expect(screen.getByText("Monthly Income:")).toBeInTheDocument();
@@ -37,7 +37,7 @@ describe('Sign Up Form - Step 3', () => {
     })
     test('Test Fill Out Form', async () => {
         await act(() => {
-            render(<SignupStep3 {...testProps}/>, container);
+            render(<SignUpStep3 {...testProps}/>, container);
         });
 
         const inputIncome = screen.getByPlaceholderText("Enter your monthly income");
@@ -53,9 +53,9 @@ describe('Sign Up Form - Step 3', () => {
     ];
     test('Test Render List', async() => {
         const mockedOnChange = jest.fn();
-        const { getByText } = render(<SignupStep3 {...testProps}
-            options={mockedOptions}
-            onChange={mockedOnChange} />);
+        const { getByText } = render(<SignUpStep3 {...testProps}
+                                                  options={mockedOptions}
+                                                  onChange={mockedOnChange} />);
 
         const placeholder = getByText('Would you like to be an advanced user?');
 
@@ -63,9 +63,9 @@ describe('Sign Up Form - Step 3', () => {
     });
     test('Test Select Option from List', async() => {
         const mockedOnChange = jest.fn();
-        const { getByText, queryByTestId } = render(<SignupStep3 {...testProps}
-            options={mockedOptions}
-            onChange={mockedOnChange} />);
+        const { getByText, queryByTestId } = render(<SignUpStep3 {...testProps}
+                                                                 options={mockedOptions}
+                                                                 onChange={mockedOnChange} />);
 
         const mySelectComponent = queryByTestId('select-component');
 
@@ -99,7 +99,7 @@ describe('Sign Up Form - Step 3', () => {
         }
 
 
-        render(<SignupStep3 {...thisProps}/>);
+        render(<SignUpStep3 {...thisProps}/>);
         const button = screen.getByRole("button");
         userEvent.click(button);
         expect(thisProps.handleSubmit).toHaveBeenCalled();
