@@ -1,4 +1,4 @@
-# TraderAuto+ Frontend Repository.
+# TraderAuto+ Frontend Repository
 
 TraderAuto+ is a web extension that provides users the ability to immediately connect with subprime lenders while looking to purchase used cars. This repository holds the code for our frontend/website.
 
